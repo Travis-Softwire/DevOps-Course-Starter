@@ -7,12 +7,49 @@
     <p class="lead">Just another to-do app.</p>
   </div>
 
-  <div class="row">
+  <div class="row mb-5">
     <div class="col-md-12">
-      <h2>Items</h2>
-      <ul class="list-group mb-4">
-        <!-- List the todo items here -->
-      </ul>
+      <h2 class="mb-5">Items</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Complete</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for item in items %}
+                <tr>
+                    <td>{{ item.title }}</td>
+                    <td>{{  item.status }}</td>
+                    <td>
+                        <form action="/complete" method="post">
+                            <input type="hidden" id="item-id" name="item-id" value="{{ item.id }}" />
+                            <input type="submit" value="complete" />
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/delete" method="post">
+                            <input type="hidden" id="item-id" name="item-id" value="{{ item.id }}" />
+                            <input type="submit" value="delete" />
+                        </form>
+                    </td>
+                </tr>
+          {% endfor %}
+            </tbody>
+        </table>
     </div>
   </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="mb-5">Add new To-do</h2>
+            <form action="/add" method="post">
+                <label for="title" class="mr-2">Enter a To-do:</label>
+                <input id="title" type="text" name="title" />
+                <input type="submit" value="submit" class="ml-2" />
+            </form>
+        </div>
+    </div>
 {% endblock %}
