@@ -36,7 +36,18 @@ You'll also need to clone a new `.env` file from the `.env.template` to store lo
 $ cp .env.template .env  # (first time only)
 ```
 
-The `.env` file is used by flask to set environment variables when running `flask run`. This enables things like development mode (which also enables features like hot reloading when you make a file change). There's also a [SECRET_KEY](https://flask.palletsprojects.com/en/2.3.x/config/#SECRET_KEY) variable which is used to encrypt the flask session cookie.
+The `.env` file is used by flask to set environment variables when running `flask run`. This enables things like development mode (which also enables features like hot reloading when you make a file change).
+
+## Setting up Trello
+
+You'll need to set-up a [Trello account](https://trello.com/signup), Trello board, a 'To-Do' list in that board, and create a [Trello API key](https://developer.atlassian.com/cloud/trello/guides/rest-api/api-introduction/#managing-your-api-key). 
+Then create a API token:Create a API Token for Trello.
+This can be done by clicking the “Token” link on the same page where your API key is displayed
+![img.png](img.png)
+
+Once you've done this, replace the TRELLO_API_KEY and TRELLO_API_TOKEN values in your .env file with you API key and token.
+
+Finally, [get your board id](https://developer.atlassian.com/cloud/trello/guides/rest-api/api-introduction/#your-first-api-call) and replace the TRELLO_TO_DO_BOARD_ID with your board's ID.
 
 ## Running the App
 
