@@ -47,7 +47,9 @@ This can be done by clicking the “Token” link on the same page where your AP
 
 Once you've done this, replace the TRELLO_API_KEY and TRELLO_API_TOKEN values in your .env file with you API key and token.
 
-Finally, [get your board id](https://developer.atlassian.com/cloud/trello/guides/rest-api/api-introduction/#your-first-api-call) and replace the TRELLO_TO_DO_BOARD_ID with your board's ID.
+
+
+Finally, [get your board id](https://developer.atlassian.com/cloud/trello/guides/rest-api/api-introduction/#your-first-api-call) and replace the TRELLO_TO_DO_BOARD_ID with your board's ID. Do the same with the organisation id (the `idOrganization` field in the same API response), replacing the TRELLO_ORGANIZATION_ID with it.
 
 ## Running the App
 
@@ -68,3 +70,15 @@ Press CTRL+C to quit
  * Debugger PIN: 113-666-066
 ```
 Now visit [`http://localhost:5000/`](http://localhost:5000/) in your web browser to view the app.
+
+## Testing the App
+
+Unit and integration tests can be found in the top level `tests` directory.
+
+End to end (Selenium) tests can be found in the top level `e2eTests` directory.
+
+To run all tests in the project from the terminal, run `pytest`
+
+To run all tests in a specific file run `pytest <path>/<to>/<test file>.py`
+
+To run a specific test on its own run `pytest <path>/<to>/<test file>.py::<name of test>`

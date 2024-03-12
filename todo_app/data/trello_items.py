@@ -19,13 +19,14 @@ def get_items():
 
     return sorted(items, key=item_key)
 
-
 def add_item(title, description, due_date):
     """
     Adds a new item with the specified title to the session.
 
     Args:
         title: The title of the item.
+        description: Item description
+        due_date: Item due date
 
     """
     TrelloClient.create_trello_card(title, description, due_date, NOT_STARTED)
