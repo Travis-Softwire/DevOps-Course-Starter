@@ -20,6 +20,7 @@ list_request_params = {
 
 
 class TrelloClient:
+    _list_ids = None
 
     @classmethod
     def get_trello_lists(cls):
@@ -40,7 +41,11 @@ class TrelloClient:
         Returns:
             The id of the list
         """
-        return [card_list['id'] for card_list in cls.get_trello_lists() if card_list['name'] == list_name][0]
+        if cls._list_ids is None:
+            cls._list_ids = {}
+            for card_list in cls.get_trello_lists():
+                cls._list_ids[card_list['name']] = card_list['id']
+        return cls._list_ids[list_name]
 
     @classmethod
     def create_trello_card(cls, card_name, card_description, due_date, list_name):
