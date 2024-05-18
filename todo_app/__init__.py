@@ -1,1 +1,1 @@
-from todo_app import app
+from todo_app.app import app
