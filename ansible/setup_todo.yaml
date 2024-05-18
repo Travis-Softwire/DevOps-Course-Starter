@@ -1,0 +1,78 @@
+- name: SETUP TODO APP
+  hosts: managed_nodes
+  remote_user: ec2-user
+
+  tasks:
+  - name: Install git
+    become: yes
+    ansible.builtin.yum:
+      name: git
+      state: present
+
+  - name: Install Python
+    become: yes
+    ansible.builtin.yum:
+      name: python3.11
+      state: latest
+
+  - name: Create todoapp user
+    become: yes
+    ansible.builtin.user:
+      name: todoapp
+
+  - name: Install Poetry
+    become: yes
+    ansible.builtin.shell: export POETRY_HOME=/usr/local; curl -sSL https://install.python-poetry.org | python3.11 -
+    args:
+      creates: /usr/local/bin/poetry
+
+  - name: Create ToDo directory
+    become: yes
+    ansible.builtin.file:
+      path: /opt/todoapp
+      state: directory
+      owner: ec2-user
+      mode: u=rwx,g=rwx,o=rx
+
+  - name: Checkout repo
+    ansible.builtin.git:
+      repo: https://github.com/Travis-Softwire/DevOps-Course-Starter
+      dest: /opt/todoapp
+      version: exercise-4
+
+  - name: Use Python3.11
+    become: yes
+    ansible.builtin.command:
+      chdir: /opt/todoapp
+      cmd: /usr/local/bin/poetry env use python3.11
+
+  - name: Poetry install
+    become: yes
+    ansible.builtin.command:
+      chdir: /opt/todoapp
+      cmd: /usr/local/bin/poetry install
+
+  - name: Create .env file
+    ansible.builtin.template:
+      src: .env.j2
+      dest: /opt/todoapp/.env
+
+  - name: Setup systemd task
+    become: yes
+    ansible.builtin.copy:
+      src: todoapp.service
+      dest: /etc/systemd/system/todoapp.service
+
+  - name: Setup systemd socket
+    become: yes
+    ansible.builtin.copy:
+      src: todoapp.socket
+      dest: /etc/systemd/system/todoapp.socket
+
+  - name: Start systemd task
+    become: yes
+    ansible.builtin.systemd:
+      name: todoapp.service
+      daemon_reload: true
+      state: restarted
+    
