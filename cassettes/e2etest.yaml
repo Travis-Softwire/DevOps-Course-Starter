@@ -1,0 +1,1119 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.31.0
+    method: GET
+    uri: https://api.trello.com/1/boards/6653b12d10831357c328097d/lists?card_fields=id%2Cname%2Cdesc%2Cdue%2CdateLastActivity&cards=open
+  response:
+    body:
+      string: '[{"id":"6653b12f56e709569fbc0f5c","name":"Completed","closed":false,"color":null,"idBoard":"6653b12d10831357c328097d","pos":8192,"subscribed":false,"softLimit":null,"cards":[]},{"id":"6653b12e20b74c23d83545cd","name":"Not
+        Started","closed":false,"color":null,"idBoard":"6653b12d10831357c328097d","pos":16384,"subscribed":false,"softLimit":null,"cards":[]}]'
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - x-rate-limit-api-key-interval-ms, x-rate-limit-api-key-max, x-rate-limit-api-key-remaining,
+        x-rate-limit-api-token-interval-ms, x-rate-limit-api-token-max, x-rate-limit-api-token-remaining
+      Atl-Traceid:
+      - 14b6e6cce7ba4b299d3344741a28541c
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '356'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 26 May 2024 22:01:23 GMT
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      Nel:
+      - '{"failure_fraction": 0.001, "include_subdomains": true, "max_age": 600, "report_to":
+        "endpoint-1"}'
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Report-To:
+      - '{"endpoints": [{"url": "https://dz8aopenkvv6s.cloudfront.net"}], "group":
+        "endpoint-1", "include_subdomains": true, "max_age": 600}'
+      Server:
+      - AtlassianEdge
+      Set-Cookie:
+      - dsc=9a701b19dbc0aaaf89a6c89990525ad34ef47a1932f7dbca98da90a2bb49a41c; Path=/;
+        Expires=Sun, 09 Jun 2024 22:01:23 GMT; Secure; SameSite=None
+      Strict-Transport-Security:
+      - max-age=63072000; preload
+      Surrogate-Control:
+      - no-store
+      Via:
+      - 1.1 2451fe262805cf9618062ee8b533ec74.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - 7GA0G11nLD37UtqQsrlxLBGk6GlciTu1C6OGSzUmrNVEafbiVqhC-w==
+      X-Amz-Cf-Pop:
+      - LHR5-P7
+      X-Cache:
+      - Miss from cloudfront
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Rate-Limit-Api-Key-Interval-Ms:
+      - '10000'
+      X-Rate-Limit-Api-Key-Max:
+      - '300'
+      X-Rate-Limit-Api-Key-Remaining:
+      - '299'
+      X-Rate-Limit-Api-Token-Interval-Ms:
+      - '10000'
+      X-Rate-Limit-Api-Token-Max:
+      - '100'
+      X-Rate-Limit-Api-Token-Remaining:
+      - '99'
+      X-Rate-Limit-Db-Query-Time-Interval-Ms:
+      - '600000'
+      X-Rate-Limit-Db-Query-Time-Max:
+      - '7200000'
+      X-Rate-Limit-Db-Query-Time-Remaining:
+      - '7199990'
+      X-Rate-Limit-Member-Interval-Ms:
+      - '10000'
+      X-Rate-Limit-Member-Max:
+      - '375'
+      X-Rate-Limit-Member-Remaining:
+      - '374'
+      X-Server-Time:
+      - '1716760883452'
+      X-Trello-Environment:
+      - Production
+      X-Trello-Version:
+      - 1.283019.0
+      X-Xss-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.31.0
+    method: GET
+    uri: https://api.trello.com/1/boards/6653b12d10831357c328097d/lists?card_fields=id%2Cname%2Cdesc%2Cdue%2CdateLastActivity&cards=open
+  response:
+    body:
+      string: '[{"id":"6653b12f56e709569fbc0f5c","name":"Completed","closed":false,"color":null,"idBoard":"6653b12d10831357c328097d","pos":8192,"subscribed":false,"softLimit":null,"cards":[]},{"id":"6653b12e20b74c23d83545cd","name":"Not
+        Started","closed":false,"color":null,"idBoard":"6653b12d10831357c328097d","pos":16384,"subscribed":false,"softLimit":null,"cards":[]}]'
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - x-rate-limit-api-key-interval-ms, x-rate-limit-api-key-max, x-rate-limit-api-key-remaining,
+        x-rate-limit-api-token-interval-ms, x-rate-limit-api-token-max, x-rate-limit-api-token-remaining
+      Atl-Traceid:
+      - b91b60c3dc394d27b132df160744c7f5
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '356'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 26 May 2024 22:01:25 GMT
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      Nel:
+      - '{"failure_fraction": 0.001, "include_subdomains": true, "max_age": 600, "report_to":
+        "endpoint-1"}'
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Report-To:
+      - '{"endpoints": [{"url": "https://dz8aopenkvv6s.cloudfront.net"}], "group":
+        "endpoint-1", "include_subdomains": true, "max_age": 600}'
+      Server:
+      - AtlassianEdge
+      Set-Cookie:
+      - dsc=836ce9ed243ac0972f6a37225f716d5c4204e48105a1e32acea226ac7a4841bf; Path=/;
+        Expires=Sun, 09 Jun 2024 22:01:25 GMT; Secure; SameSite=None
+      Strict-Transport-Security:
+      - max-age=63072000; preload
+      Surrogate-Control:
+      - no-store
+      Via:
+      - 1.1 06c7d4eec4ed67aff9aa4659f05ee190.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - gMZfOArKNuQMpWPAc-EDdaqNieVOyv4A1AE2vDzMGzZ7icxSfpVgOw==
+      X-Amz-Cf-Pop:
+      - LHR5-P7
+      X-Cache:
+      - Miss from cloudfront
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Rate-Limit-Api-Key-Interval-Ms:
+      - '10000'
+      X-Rate-Limit-Api-Key-Max:
+      - '300'
+      X-Rate-Limit-Api-Key-Remaining:
+      - '298'
+      X-Rate-Limit-Api-Token-Interval-Ms:
+      - '10000'
+      X-Rate-Limit-Api-Token-Max:
+      - '100'
+      X-Rate-Limit-Api-Token-Remaining:
+      - '98'
+      X-Rate-Limit-Db-Query-Time-Interval-Ms:
+      - '600000'
+      X-Rate-Limit-Db-Query-Time-Max:
+      - '7200000'
+      X-Rate-Limit-Db-Query-Time-Remaining:
+      - '7199990'
+      X-Rate-Limit-Member-Interval-Ms:
+      - '10000'
+      X-Rate-Limit-Member-Max:
+      - '375'
+      X-Rate-Limit-Member-Remaining:
+      - '373'
+      X-Server-Time:
+      - '1716760885461'
+      X-Trello-Environment:
+      - Production
+      X-Trello-Version:
+      - 1.283019.0
+      X-Xss-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      User-Agent:
+      - python-requests/2.31.0
+    method: POST
+    uri: https://api.trello.com/1/cards?card_fields=id%2Cname%2Cdesc%2Cdue%2CdateLastActivity&cards=open&desc=Test+description&due=2025-01-01T00%3A00%3A00&idList=6653b12e20b74c23d83545cd&name=Test+title
+  response:
+    body:
+      string: '{"id":"6653b136fabfac7b2b0d449c","badges":{"attachmentsByType":{"trello":{"board":0,"card":0}},"externalSource":null,"location":false,"votes":0,"viewingMemberVoted":false,"subscribed":false,"attachments":0,"fogbugz":"","checkItems":0,"checkItemsChecked":0,"checkItemsEarliestDue":null,"comments":0,"description":true,"due":"2025-01-01T00:00:00.000Z","dueComplete":false,"lastUpdatedByAi":false,"start":null},"checkItemStates":[],"closed":false,"dueComplete":false,"dateLastActivity":"2024-05-26T22:01:26.705Z","desc":"Test
+        description","descData":{"emoji":{}},"due":"2025-01-01T00:00:00.000Z","dueReminder":null,"email":null,"idBoard":"6653b12d10831357c328097d","idChecklists":[],"idList":"6653b12e20b74c23d83545cd","idMembers":[],"idMembersVoted":[],"idShort":1,"idAttachmentCover":null,"labels":[],"idLabels":[],"manualCoverAttachment":false,"name":"Test
+        title","pos":16384,"shortLink":"mXTdEBEw","shortUrl":"https://trello.com/c/mXTdEBEw","start":null,"subscribed":false,"url":"https://trello.com/c/mXTdEBEw/1-test-title","cover":{"idAttachment":null,"color":null,"idUploadedBackground":null,"size":"normal","brightness":"dark","idPlugin":null},"isTemplate":false,"cardRole":null,"attachments":[],"stickers":[],"limits":{}}'
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - x-rate-limit-api-key-interval-ms, x-rate-limit-api-key-max, x-rate-limit-api-key-remaining,
+        x-rate-limit-api-token-interval-ms, x-rate-limit-api-token-max, x-rate-limit-api-token-remaining
+      Atl-Traceid:
+      - 115116e6aed540938799a4219324be49
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1226'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 26 May 2024 22:01:26 GMT
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      Nel:
+      - '{"failure_fraction": 0.001, "include_subdomains": true, "max_age": 600, "report_to":
+        "endpoint-1"}'
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Report-To:
+      - '{"endpoints": [{"url": "https://dz8aopenkvv6s.cloudfront.net"}], "group":
+        "endpoint-1", "include_subdomains": true, "max_age": 600}'
+      Server:
+      - AtlassianEdge
+      Strict-Transport-Security:
+      - max-age=63072000; preload
+      Surrogate-Control:
+      - no-store
+      Via:
+      - 1.1 4b72e8bce5fb07f5e1f0341a161d34d8.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - 9C7r1PxH7zC4Oqah1P3bzcyOoGBDAHWXmlSxZq_An8PQlr6Pk2g9wA==
+      X-Amz-Cf-Pop:
+      - LHR5-P7
+      X-Cache:
+      - Miss from cloudfront
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Rate-Limit-Api-Key-Interval-Ms:
+      - '10000'
+      X-Rate-Limit-Api-Key-Max:
+      - '300'
+      X-Rate-Limit-Api-Key-Remaining:
+      - '297'
+      X-Rate-Limit-Api-Token-Interval-Ms:
+      - '10000'
+      X-Rate-Limit-Api-Token-Max:
+      - '100'
+      X-Rate-Limit-Api-Token-Remaining:
+      - '97'
+      X-Rate-Limit-Db-Query-Time-Interval-Ms:
+      - '600000'
+      X-Rate-Limit-Db-Query-Time-Max:
+      - '7200000'
+      X-Rate-Limit-Db-Query-Time-Remaining:
+      - '7199990'
+      X-Rate-Limit-Member-Interval-Ms:
+      - '10000'
+      X-Rate-Limit-Member-Max:
+      - '375'
+      X-Rate-Limit-Member-Remaining:
+      - '372'
+      X-Server-Time:
+      - '1716760886821'
+      X-Trello-Environment:
+      - Production
+      X-Trello-Version:
+      - 1.283019.0
+      X-Xss-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.31.0
+    method: GET
+    uri: https://api.trello.com/1/boards/6653b12d10831357c328097d/lists?card_fields=id%2Cname%2Cdesc%2Cdue%2CdateLastActivity&cards=open
+  response:
+    body:
+      string: '[{"id":"6653b12f56e709569fbc0f5c","name":"Completed","closed":false,"color":null,"idBoard":"6653b12d10831357c328097d","pos":8192,"subscribed":false,"softLimit":null,"cards":[]},{"id":"6653b12e20b74c23d83545cd","name":"Not
+        Started","closed":false,"color":null,"idBoard":"6653b12d10831357c328097d","pos":16384,"subscribed":false,"softLimit":null,"cards":[{"id":"6653b136fabfac7b2b0d449c","name":"Test
+        title","desc":"Test description","due":"2025-01-01T00:00:00.000Z","dateLastActivity":"2024-05-26T22:01:26.705Z"}]}]'
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - x-rate-limit-api-key-interval-ms, x-rate-limit-api-key-max, x-rate-limit-api-key-remaining,
+        x-rate-limit-api-token-interval-ms, x-rate-limit-api-token-max, x-rate-limit-api-token-remaining
+      Atl-Traceid:
+      - b219121c9b1342d1ac6e941cea72857c
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '514'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 26 May 2024 22:01:27 GMT
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      Nel:
+      - '{"failure_fraction": 0.001, "include_subdomains": true, "max_age": 600, "report_to":
+        "endpoint-1"}'
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Report-To:
+      - '{"endpoints": [{"url": "https://dz8aopenkvv6s.cloudfront.net"}], "group":
+        "endpoint-1", "include_subdomains": true, "max_age": 600}'
+      Server:
+      - AtlassianEdge
+      Set-Cookie:
+      - dsc=e2f13b75bc3452bf84d5e81f9947b46721dca73dea0724231bf978aca14971d7; Path=/;
+        Expires=Sun, 09 Jun 2024 22:01:27 GMT; Secure; SameSite=None
+      Strict-Transport-Security:
+      - max-age=63072000; preload
+      Surrogate-Control:
+      - no-store
+      Via:
+      - 1.1 e71b19e5341031237d6419cd8302b6ce.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - ka8vxobyAwxk1yycicvQrGBDcROzvXJatfUjztRAWMb7PyS-gf9taA==
+      X-Amz-Cf-Pop:
+      - LHR5-P7
+      X-Cache:
+      - Miss from cloudfront
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Rate-Limit-Api-Key-Interval-Ms:
+      - '10000'
+      X-Rate-Limit-Api-Key-Max:
+      - '300'
+      X-Rate-Limit-Api-Key-Remaining:
+      - '296'
+      X-Rate-Limit-Api-Token-Interval-Ms:
+      - '10000'
+      X-Rate-Limit-Api-Token-Max:
+      - '100'
+      X-Rate-Limit-Api-Token-Remaining:
+      - '96'
+      X-Rate-Limit-Db-Query-Time-Interval-Ms:
+      - '600000'
+      X-Rate-Limit-Db-Query-Time-Max:
+      - '7200000'
+      X-Rate-Limit-Db-Query-Time-Remaining:
+      - '7199990'
+      X-Rate-Limit-Member-Interval-Ms:
+      - '10000'
+      X-Rate-Limit-Member-Max:
+      - '375'
+      X-Rate-Limit-Member-Remaining:
+      - '371'
+      X-Server-Time:
+      - '1716760887850'
+      X-Trello-Actual-Fastget-Path:
+      - fast
+      X-Trello-Environment:
+      - Production
+      X-Trello-Version:
+      - 1.283019.0
+      X-Xss-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      User-Agent:
+      - python-requests/2.31.0
+    method: PUT
+    uri: https://api.trello.com/1/cards/6653b136fabfac7b2b0d449c?card_fields=id%2Cname%2Cdesc%2Cdue%2CdateLastActivity&cards=open&idList=6653b12f56e709569fbc0f5c
+  response:
+    body:
+      string: '{"id":"6653b136fabfac7b2b0d449c","badges":{"attachmentsByType":{"trello":{"board":0,"card":0}},"externalSource":null,"location":false,"votes":0,"viewingMemberVoted":false,"subscribed":false,"attachments":0,"fogbugz":"","checkItems":0,"checkItemsChecked":0,"checkItemsEarliestDue":null,"comments":0,"description":true,"due":"2025-01-01T00:00:00.000Z","dueComplete":false,"lastUpdatedByAi":false,"start":null},"checkItemStates":[],"closed":false,"dueComplete":false,"dateLastActivity":"2024-05-26T22:01:29.154Z","desc":"Test
+        description","descData":{"emoji":{}},"due":"2025-01-01T00:00:00.000Z","dueReminder":null,"email":null,"idBoard":"6653b12d10831357c328097d","idChecklists":[],"idList":"6653b12f56e709569fbc0f5c","idMembers":[],"idMembersVoted":[],"idShort":1,"idAttachmentCover":null,"labels":[],"idLabels":[],"manualCoverAttachment":false,"name":"Test
+        title","pos":16384,"shortLink":"mXTdEBEw","shortUrl":"https://trello.com/c/mXTdEBEw","start":null,"subscribed":false,"url":"https://trello.com/c/mXTdEBEw/1-test-title","cover":{"idAttachment":null,"color":null,"idUploadedBackground":null,"size":"normal","brightness":"dark","idPlugin":null},"isTemplate":false,"cardRole":null}'
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - x-rate-limit-api-key-interval-ms, x-rate-limit-api-key-max, x-rate-limit-api-key-remaining,
+        x-rate-limit-api-token-interval-ms, x-rate-limit-api-token-max, x-rate-limit-api-token-remaining
+      Atl-Traceid:
+      - 837c078a19ca4aa5a9ce4d93226efe8b
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1183'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 26 May 2024 22:01:29 GMT
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      Nel:
+      - '{"failure_fraction": 0.001, "include_subdomains": true, "max_age": 600, "report_to":
+        "endpoint-1"}'
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Report-To:
+      - '{"endpoints": [{"url": "https://dz8aopenkvv6s.cloudfront.net"}], "group":
+        "endpoint-1", "include_subdomains": true, "max_age": 600}'
+      Server:
+      - AtlassianEdge
+      Strict-Transport-Security:
+      - max-age=63072000; preload
+      Surrogate-Control:
+      - no-store
+      Via:
+      - 1.1 9399b889481d52fdce69080691aeb298.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - oKnN-O2bA1oEpJxdSZkoY4prrOcXZZiEbneHD5LV51kiJHPAmdfYbw==
+      X-Amz-Cf-Pop:
+      - LHR5-P7
+      X-Cache:
+      - Miss from cloudfront
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Rate-Limit-Api-Key-Interval-Ms:
+      - '10000'
+      X-Rate-Limit-Api-Key-Max:
+      - '300'
+      X-Rate-Limit-Api-Key-Remaining:
+      - '295'
+      X-Rate-Limit-Api-Token-Interval-Ms:
+      - '10000'
+      X-Rate-Limit-Api-Token-Max:
+      - '100'
+      X-Rate-Limit-Api-Token-Remaining:
+      - '95'
+      X-Rate-Limit-Db-Query-Time-Interval-Ms:
+      - '600000'
+      X-Rate-Limit-Db-Query-Time-Max:
+      - '7200000'
+      X-Rate-Limit-Db-Query-Time-Remaining:
+      - '7199990'
+      X-Rate-Limit-Member-Interval-Ms:
+      - '10000'
+      X-Rate-Limit-Member-Max:
+      - '375'
+      X-Rate-Limit-Member-Remaining:
+      - '370'
+      X-Server-Time:
+      - '1716760889221'
+      X-Trello-Environment:
+      - Production
+      X-Trello-Version:
+      - 1.283019.0
+      X-Xss-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.31.0
+    method: GET
+    uri: https://api.trello.com/1/boards/6653b12d10831357c328097d/lists?card_fields=id%2Cname%2Cdesc%2Cdue%2CdateLastActivity&cards=open
+  response:
+    body:
+      string: '[{"id":"6653b12f56e709569fbc0f5c","name":"Completed","closed":false,"color":null,"idBoard":"6653b12d10831357c328097d","pos":8192,"subscribed":false,"softLimit":null,"cards":[{"id":"6653b136fabfac7b2b0d449c","name":"Test
+        title","desc":"Test description","due":"2025-01-01T00:00:00.000Z","dateLastActivity":"2024-05-26T22:01:29.154Z"}]},{"id":"6653b12e20b74c23d83545cd","name":"Not
+        Started","closed":false,"color":null,"idBoard":"6653b12d10831357c328097d","pos":16384,"subscribed":false,"softLimit":null,"cards":[]}]'
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - x-rate-limit-api-key-interval-ms, x-rate-limit-api-key-max, x-rate-limit-api-key-remaining,
+        x-rate-limit-api-token-interval-ms, x-rate-limit-api-token-max, x-rate-limit-api-token-remaining
+      Atl-Traceid:
+      - 72e2628bb4bf43cd9720c6b371731d23
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '514'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 26 May 2024 22:01:30 GMT
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      Nel:
+      - '{"failure_fraction": 0.001, "include_subdomains": true, "max_age": 600, "report_to":
+        "endpoint-1"}'
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Report-To:
+      - '{"endpoints": [{"url": "https://dz8aopenkvv6s.cloudfront.net"}], "group":
+        "endpoint-1", "include_subdomains": true, "max_age": 600}'
+      Server:
+      - AtlassianEdge
+      Set-Cookie:
+      - dsc=786b4713d5f17b1b86984270af1fc80b3c876bfd888d85152988867481e9a2fd; Path=/;
+        Expires=Sun, 09 Jun 2024 22:01:30 GMT; Secure; SameSite=None
+      Strict-Transport-Security:
+      - max-age=63072000; preload
+      Surrogate-Control:
+      - no-store
+      Via:
+      - 1.1 44057555dbfad2fc56417834ad0e2834.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - FcXMNBOJB-S9kX8OCZlObVK0dB7WdNHjYMEGcRcfHo12XrqfnQIvHQ==
+      X-Amz-Cf-Pop:
+      - LHR5-P7
+      X-Cache:
+      - Miss from cloudfront
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Rate-Limit-Api-Key-Interval-Ms:
+      - '10000'
+      X-Rate-Limit-Api-Key-Max:
+      - '300'
+      X-Rate-Limit-Api-Key-Remaining:
+      - '299'
+      X-Rate-Limit-Api-Token-Interval-Ms:
+      - '10000'
+      X-Rate-Limit-Api-Token-Max:
+      - '100'
+      X-Rate-Limit-Api-Token-Remaining:
+      - '99'
+      X-Rate-Limit-Db-Query-Time-Interval-Ms:
+      - '600000'
+      X-Rate-Limit-Db-Query-Time-Max:
+      - '7200000'
+      X-Rate-Limit-Db-Query-Time-Remaining:
+      - '7199990'
+      X-Rate-Limit-Member-Interval-Ms:
+      - '10000'
+      X-Rate-Limit-Member-Max:
+      - '375'
+      X-Rate-Limit-Member-Remaining:
+      - '374'
+      X-Server-Time:
+      - '1716760890217'
+      X-Trello-Actual-Fastget-Path:
+      - fast
+      X-Trello-Environment:
+      - Production
+      X-Trello-Version:
+      - 1.283019.0
+      X-Xss-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      User-Agent:
+      - python-requests/2.31.0
+    method: PUT
+    uri: https://api.trello.com/1/cards/6653b136fabfac7b2b0d449c?card_fields=id%2Cname%2Cdesc%2Cdue%2CdateLastActivity&cards=open&idList=6653b12e20b74c23d83545cd
+  response:
+    body:
+      string: '{"id":"6653b136fabfac7b2b0d449c","badges":{"attachmentsByType":{"trello":{"board":0,"card":0}},"externalSource":null,"location":false,"votes":0,"viewingMemberVoted":false,"subscribed":false,"attachments":0,"fogbugz":"","checkItems":0,"checkItemsChecked":0,"checkItemsEarliestDue":null,"comments":0,"description":true,"due":"2025-01-01T00:00:00.000Z","dueComplete":false,"lastUpdatedByAi":false,"start":null},"checkItemStates":[],"closed":false,"dueComplete":false,"dateLastActivity":"2024-05-26T22:01:31.421Z","desc":"Test
+        description","descData":{"emoji":{}},"due":"2025-01-01T00:00:00.000Z","dueReminder":null,"email":null,"idBoard":"6653b12d10831357c328097d","idChecklists":[],"idList":"6653b12e20b74c23d83545cd","idMembers":[],"idMembersVoted":[],"idShort":1,"idAttachmentCover":null,"labels":[],"idLabels":[],"manualCoverAttachment":false,"name":"Test
+        title","pos":16384,"shortLink":"mXTdEBEw","shortUrl":"https://trello.com/c/mXTdEBEw","start":null,"subscribed":false,"url":"https://trello.com/c/mXTdEBEw/1-test-title","cover":{"idAttachment":null,"color":null,"idUploadedBackground":null,"size":"normal","brightness":"dark","idPlugin":null},"isTemplate":false,"cardRole":null}'
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - x-rate-limit-api-key-interval-ms, x-rate-limit-api-key-max, x-rate-limit-api-key-remaining,
+        x-rate-limit-api-token-interval-ms, x-rate-limit-api-token-max, x-rate-limit-api-token-remaining
+      Atl-Traceid:
+      - 05c89537b162439fa4a6aa7c71ba60fd
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1183'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 26 May 2024 22:01:31 GMT
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      Nel:
+      - '{"failure_fraction": 0.001, "include_subdomains": true, "max_age": 600, "report_to":
+        "endpoint-1"}'
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Report-To:
+      - '{"endpoints": [{"url": "https://dz8aopenkvv6s.cloudfront.net"}], "group":
+        "endpoint-1", "include_subdomains": true, "max_age": 600}'
+      Server:
+      - AtlassianEdge
+      Strict-Transport-Security:
+      - max-age=63072000; preload
+      Surrogate-Control:
+      - no-store
+      Via:
+      - 1.1 d19c86161d0c021ed9e0f1495520ffa8.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - mTQG7gesNMP4yB-pE87-iqyxPWQ6pKHUEk3q7YOijw3BVS5l47D1rw==
+      X-Amz-Cf-Pop:
+      - LHR5-P7
+      X-Cache:
+      - Miss from cloudfront
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Rate-Limit-Api-Key-Interval-Ms:
+      - '10000'
+      X-Rate-Limit-Api-Key-Max:
+      - '300'
+      X-Rate-Limit-Api-Key-Remaining:
+      - '298'
+      X-Rate-Limit-Api-Token-Interval-Ms:
+      - '10000'
+      X-Rate-Limit-Api-Token-Max:
+      - '100'
+      X-Rate-Limit-Api-Token-Remaining:
+      - '98'
+      X-Rate-Limit-Db-Query-Time-Interval-Ms:
+      - '600000'
+      X-Rate-Limit-Db-Query-Time-Max:
+      - '7200000'
+      X-Rate-Limit-Db-Query-Time-Remaining:
+      - '7199990'
+      X-Rate-Limit-Member-Interval-Ms:
+      - '10000'
+      X-Rate-Limit-Member-Max:
+      - '375'
+      X-Rate-Limit-Member-Remaining:
+      - '373'
+      X-Server-Time:
+      - '1716760891554'
+      X-Trello-Environment:
+      - Production
+      X-Trello-Version:
+      - 1.283019.0
+      X-Xss-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.31.0
+    method: GET
+    uri: https://api.trello.com/1/boards/6653b12d10831357c328097d/lists?card_fields=id%2Cname%2Cdesc%2Cdue%2CdateLastActivity&cards=open
+  response:
+    body:
+      string: '[{"id":"6653b12f56e709569fbc0f5c","name":"Completed","closed":false,"color":null,"idBoard":"6653b12d10831357c328097d","pos":8192,"subscribed":false,"softLimit":null,"cards":[]},{"id":"6653b12e20b74c23d83545cd","name":"Not
+        Started","closed":false,"color":null,"idBoard":"6653b12d10831357c328097d","pos":16384,"subscribed":false,"softLimit":null,"cards":[{"id":"6653b136fabfac7b2b0d449c","name":"Test
+        title","desc":"Test description","due":"2025-01-01T00:00:00.000Z","dateLastActivity":"2024-05-26T22:01:31.421Z"}]}]'
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - x-rate-limit-api-key-interval-ms, x-rate-limit-api-key-max, x-rate-limit-api-key-remaining,
+        x-rate-limit-api-token-interval-ms, x-rate-limit-api-token-max, x-rate-limit-api-token-remaining
+      Atl-Traceid:
+      - e9a7b713964a49d998b4d08cb2b47585
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '514'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 26 May 2024 22:01:32 GMT
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      Nel:
+      - '{"failure_fraction": 0.001, "include_subdomains": true, "max_age": 600, "report_to":
+        "endpoint-1"}'
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Report-To:
+      - '{"endpoints": [{"url": "https://dz8aopenkvv6s.cloudfront.net"}], "group":
+        "endpoint-1", "include_subdomains": true, "max_age": 600}'
+      Server:
+      - AtlassianEdge
+      Set-Cookie:
+      - dsc=f78998433569996317617dc49e61744375f4568cc2ee4775f8e635f4186fd963; Path=/;
+        Expires=Sun, 09 Jun 2024 22:01:32 GMT; Secure; SameSite=None
+      Strict-Transport-Security:
+      - max-age=63072000; preload
+      Surrogate-Control:
+      - no-store
+      Via:
+      - 1.1 4b72e8bce5fb07f5e1f0341a161d34d8.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - nHSvDk7ir7_Vfz06pZOwKHBG_OAI8FRU5ZRljkLJkdPjikw2uqWObw==
+      X-Amz-Cf-Pop:
+      - LHR5-P7
+      X-Cache:
+      - Miss from cloudfront
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Rate-Limit-Api-Key-Interval-Ms:
+      - '10000'
+      X-Rate-Limit-Api-Key-Max:
+      - '300'
+      X-Rate-Limit-Api-Key-Remaining:
+      - '297'
+      X-Rate-Limit-Api-Token-Interval-Ms:
+      - '10000'
+      X-Rate-Limit-Api-Token-Max:
+      - '100'
+      X-Rate-Limit-Api-Token-Remaining:
+      - '97'
+      X-Rate-Limit-Db-Query-Time-Interval-Ms:
+      - '600000'
+      X-Rate-Limit-Db-Query-Time-Max:
+      - '7200000'
+      X-Rate-Limit-Db-Query-Time-Remaining:
+      - '7199990'
+      X-Rate-Limit-Member-Interval-Ms:
+      - '10000'
+      X-Rate-Limit-Member-Max:
+      - '375'
+      X-Rate-Limit-Member-Remaining:
+      - '372'
+      X-Server-Time:
+      - '1716760892464'
+      X-Trello-Actual-Fastget-Path:
+      - fast
+      X-Trello-Environment:
+      - Production
+      X-Trello-Version:
+      - 1.283019.0
+      X-Xss-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      User-Agent:
+      - python-requests/2.31.0
+    method: DELETE
+    uri: https://api.trello.com/1/cards/6653b136fabfac7b2b0d449c?card_fields=id%2Cname%2Cdesc%2Cdue%2CdateLastActivity&cards=open
+  response:
+    body:
+      string: '{"limits":{}}'
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - x-rate-limit-api-key-interval-ms, x-rate-limit-api-key-max, x-rate-limit-api-key-remaining,
+        x-rate-limit-api-token-interval-ms, x-rate-limit-api-token-max, x-rate-limit-api-token-remaining
+      Atl-Traceid:
+      - ff350036878d412b9123a69e29f3a16b
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '13'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 26 May 2024 22:01:34 GMT
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      Nel:
+      - '{"failure_fraction": 0.001, "include_subdomains": true, "max_age": 600, "report_to":
+        "endpoint-1"}'
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Report-To:
+      - '{"endpoints": [{"url": "https://dz8aopenkvv6s.cloudfront.net"}], "group":
+        "endpoint-1", "include_subdomains": true, "max_age": 600}'
+      Server:
+      - AtlassianEdge
+      Strict-Transport-Security:
+      - max-age=63072000; preload
+      Surrogate-Control:
+      - no-store
+      Via:
+      - 1.1 06c7d4eec4ed67aff9aa4659f05ee190.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - VWWrGTMvpgFD8mpbQlWhydkqr40R1LQIO0Er-scl4WzMKWyKLurzgg==
+      X-Amz-Cf-Pop:
+      - LHR5-P7
+      X-Cache:
+      - Miss from cloudfront
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Rate-Limit-Api-Key-Interval-Ms:
+      - '10000'
+      X-Rate-Limit-Api-Key-Max:
+      - '300'
+      X-Rate-Limit-Api-Key-Remaining:
+      - '296'
+      X-Rate-Limit-Api-Token-Interval-Ms:
+      - '10000'
+      X-Rate-Limit-Api-Token-Max:
+      - '100'
+      X-Rate-Limit-Api-Token-Remaining:
+      - '96'
+      X-Rate-Limit-Db-Query-Time-Interval-Ms:
+      - '600000'
+      X-Rate-Limit-Db-Query-Time-Max:
+      - '7200000'
+      X-Rate-Limit-Db-Query-Time-Remaining:
+      - '7199990'
+      X-Rate-Limit-Member-Interval-Ms:
+      - '10000'
+      X-Rate-Limit-Member-Max:
+      - '375'
+      X-Rate-Limit-Member-Remaining:
+      - '371'
+      X-Server-Time:
+      - '1716760894059'
+      X-Trello-Environment:
+      - Production
+      X-Trello-Version:
+      - 1.283019.0
+      X-Xss-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.31.0
+    method: GET
+    uri: https://api.trello.com/1/boards/6653b12d10831357c328097d/lists?card_fields=id%2Cname%2Cdesc%2Cdue%2CdateLastActivity&cards=open
+  response:
+    body:
+      string: '[{"id":"6653b12f56e709569fbc0f5c","name":"Completed","closed":false,"color":null,"idBoard":"6653b12d10831357c328097d","pos":8192,"subscribed":false,"softLimit":null,"cards":[]},{"id":"6653b12e20b74c23d83545cd","name":"Not
+        Started","closed":false,"color":null,"idBoard":"6653b12d10831357c328097d","pos":16384,"subscribed":false,"softLimit":null,"cards":[]}]'
+    headers:
+      Access-Control-Allow-Headers:
+      - Authorization, Accept, Content-Type
+      Access-Control-Allow-Methods:
+      - GET, PUT, POST, DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - x-rate-limit-api-key-interval-ms, x-rate-limit-api-key-max, x-rate-limit-api-key-remaining,
+        x-rate-limit-api-token-interval-ms, x-rate-limit-api-token-max, x-rate-limit-api-token-remaining
+      Atl-Traceid:
+      - d70d5824ed9c4397bd2f3f4984e01802
+      Cache-Control:
+      - max-age=0, must-revalidate, no-cache, no-store
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '356'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sun, 26 May 2024 22:01:35 GMT
+      Expires:
+      - Thu, 01 Jan 1970 00:00:00
+      Nel:
+      - '{"failure_fraction": 0.001, "include_subdomains": true, "max_age": 600, "report_to":
+        "endpoint-1"}'
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Report-To:
+      - '{"endpoints": [{"url": "https://dz8aopenkvv6s.cloudfront.net"}], "group":
+        "endpoint-1", "include_subdomains": true, "max_age": 600}'
+      Server:
+      - AtlassianEdge
+      Set-Cookie:
+      - dsc=1feee78565c50bc5a6f36ba73abb4846cafdc83422c481402d406d0517e79509; Path=/;
+        Expires=Sun, 09 Jun 2024 22:01:35 GMT; Secure; SameSite=None
+      Strict-Transport-Security:
+      - max-age=63072000; preload
+      Surrogate-Control:
+      - no-store
+      Via:
+      - 1.1 f6464b7d5450140d724b02dc30ebfa32.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - y7SGtcf7C0OsoP5CpSV78iWZJbminc-aq7N1GKclSrGJxzIGOvFSew==
+      X-Amz-Cf-Pop:
+      - LHR5-P7
+      X-Cache:
+      - Miss from cloudfront
+      X-Content-Type-Options:
+      - nosniff
+      X-Dns-Prefetch-Control:
+      - 'off'
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - DENY
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Rate-Limit-Api-Key-Interval-Ms:
+      - '10000'
+      X-Rate-Limit-Api-Key-Max:
+      - '300'
+      X-Rate-Limit-Api-Key-Remaining:
+      - '295'
+      X-Rate-Limit-Api-Token-Interval-Ms:
+      - '10000'
+      X-Rate-Limit-Api-Token-Max:
+      - '100'
+      X-Rate-Limit-Api-Token-Remaining:
+      - '95'
+      X-Rate-Limit-Db-Query-Time-Interval-Ms:
+      - '600000'
+      X-Rate-Limit-Db-Query-Time-Max:
+      - '7200000'
+      X-Rate-Limit-Db-Query-Time-Remaining:
+      - '7199990'
+      X-Rate-Limit-Member-Interval-Ms:
+      - '10000'
+      X-Rate-Limit-Member-Max:
+      - '375'
+      X-Rate-Limit-Member-Remaining:
+      - '370'
+      X-Server-Time:
+      - '1716760895304'
+      X-Trello-Environment:
+      - Production
+      X-Trello-Version:
+      - 1.283019.0
+      X-Xss-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+version: 1

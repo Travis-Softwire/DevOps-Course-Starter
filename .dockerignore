@@ -1,0 +1,13 @@
+.github
+.pytest_cache
+.venv
+.vscode
+ansible
+venv
+.env
+.env.template
+.gitignore
+.gitpod.yml
+Dockerfile
+img.png
+README.md

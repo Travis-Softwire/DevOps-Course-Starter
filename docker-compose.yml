@@ -1,0 +1,46 @@
+services:
+  development:
+    image: todo-app:development
+    env_file:
+      - .env
+    ports:
+      - "5000:5000"
+    volumes:
+      - type: bind
+        source: ./todo_app
+        target: /opt/todoapp/todo_app
+
+  production:
+    image: todo-app:production
+    env_file:
+      - .env
+    ports:
+      - "5000:80"
+
+  runTests:
+    image: todo-app:tests
+    env_file:
+      - .env
+    volumes:
+      - type: bind
+        source: ./todo_app
+        target: /opt/todoapp/todo_app
+      - type: bind
+        source: ./tests
+        target: /opt/todoapp/tests
+      - type: bind
+        source: ./e2eTests
+        target: /opt/todoapp/e2eTests
+
+  watchUnitTests:
+    image: todo-app:watchUnitTests
+    env_file:
+      - .env
+    volumes:
+      - type: bind
+        source: ./todo_app
+        target: /opt/todoapp/todo_app
+      - type: bind
+        source: ./tests
+        target: /opt/todoapp/tests
+
