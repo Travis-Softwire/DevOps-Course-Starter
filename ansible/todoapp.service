@@ -1,0 +1,9 @@
+[Unit]
+Description=My To-Do App
+Requires=todoapp.socket
+
+[Service]
+User=todoapp
+WorkingDirectory=/opt/todoapp
+EnvironmentFile=/opt/todoapp/.env
+ExecStart=/usr/local/bin/poetry run gunicorn -w 4 -b 0.0.0.0:80 'todo_app:app'
