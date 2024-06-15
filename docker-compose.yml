@@ -1,6 +1,9 @@
 services:
   development:
     image: todo-app:development
+    build:
+      context: .
+      target: development
     env_file:
       - .env
     ports:
@@ -12,13 +15,19 @@ services:
 
   production:
     image: todo-app:production
+    build:
+      context: .
+      target: production
     env_file:
       - .env
     ports:
-      - "5000:80"
+      - "80:8000"
 
   runTests:
     image: todo-app:tests
+    build:
+      context: .
+      target: tests
     env_file:
       - .env
     volumes:
@@ -34,6 +43,9 @@ services:
 
   watchUnitTests:
     image: todo-app:watchUnitTests
+    build:
+      context: .
+      target: watchUnitTests
     env_file:
       - .env
     volumes:

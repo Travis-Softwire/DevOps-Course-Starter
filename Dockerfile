@@ -19,7 +19,7 @@ Entrypoint tail -f /dev/null
 FROM base as production
 RUN poetry install --no-dev
 COPY ./todo_app ./todo_app
-ENTRYPOINT poetry run gunicorn --bind 0.0.0.0 'todo_app:app'
+ENTRYPOINT poetry run gunicorn --bind 0.0.0.0 'todo_app.app:create_app()'
 
 FROM base as tests
 ENV FLASK_DEBUG="true"

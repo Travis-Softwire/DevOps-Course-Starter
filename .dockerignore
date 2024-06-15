@@ -11,3 +11,4 @@ venv
 Dockerfile
 img.png
 README.md
+**/__pycache__
