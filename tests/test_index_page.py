@@ -7,12 +7,11 @@ import todo_app.data.trello_client
 
 from todo_app import app
 
-
 @pytest.fixture
 def client():
     # Use our test integration config instead of the 'real' version
     # Create the new app.
-    file_path = find_dotenv('.env.test')
+    file_path = find_dotenv('./.env.test')
     load_dotenv(file_path, override=True)
     importlib.reload(todo_app.data.trello_client)
 
