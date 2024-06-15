@@ -21,12 +21,12 @@ import todo_app.data.trello_client
 def app_with_temp_board():
     # Create the new board & update the board id environment variable
     with vcr.use_cassette(
-            "cassettes/e2etest_setup.yaml", filter_query_parameters=['key', 'token'], ignore_localhost=True
+            "e2eTests/cassettes/e2etest_setup.yaml", filter_query_parameters=['key', 'token'], ignore_localhost=True
     ):
-        board_id = create_trello_board("test board")
         file_path = find_dotenv('.env')
         load_dotenv(file_path, override=True)
         importlib.reload(todo_app.data.trello_client)
+        board_id = create_trello_board("test board")
         original_board_id = os.environ.get('TRELLO_TO_DO_BOARD_ID')
         todo_app.data.trello_client.TRELLO_TO_DO_BOARD_ID = board_id
 
@@ -54,7 +54,7 @@ def driver():
         yield driver
 
 
-@vcr.use_cassette("cassettes/e2etest.yaml", filter_query_parameters=['key', 'token'], ignore_localhost=True)
+@vcr.use_cassette("e2eTests/cassettes/e2etest.yaml", filter_query_parameters=['key', 'token'], ignore_localhost=True)
 def test_task_journey(driver, app_with_temp_board):
     driver.get('http://localhost:5000/')
 

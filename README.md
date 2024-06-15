@@ -77,8 +77,8 @@ Unit and integration tests can be found in the top level `tests` directory.
 
 End to end (Selenium) tests can be found in the top level `e2eTests` directory.
 
-To run all tests in the project from the terminal, run `pytest`
+To run all tests in the project from the terminal, run `poetry run pytest`
 
-To run all tests in a specific file run `pytest <path>/<to>/<test file>.py`
+To run all tests in a specific file run `poetry run pytest <path>/<to>/<test file>.py`
 
-To run a specific test on its own run `pytest <path>/<to>/<test file>.py::<name of test>`
+To run a specific test on its own run `poetry run pytest <path>/<to>/<test file>.py::<name of test>`
