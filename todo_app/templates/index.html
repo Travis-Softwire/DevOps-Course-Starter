@@ -10,7 +10,7 @@
   <div class="row mb-5">
     <div class="col-md-12">
       <h2 class="mb-5">Items</h2>
-        <table class="table">
+        <table class="table" id="todos">
             <thead>
                 <tr>
                     <th scope="col">Title</th>
@@ -22,7 +22,7 @@
                 </tr>
             </thead>
             <tbody>
-            {% for item in items %}
+            {% for item in view_model.items %}
                 <tr>
                     <td>{{ item.title }}</td>
                     <td>{{ item.description }}</td>
@@ -32,25 +32,71 @@
                         {% if item.status == not_started_status %}
                             <form action="/complete" method="post">
                                 <input type="hidden" id="item-id" name="item-id" value="{{ item.id }}" />
-                                <input type="submit" value="complete" />
+                                <input id="complete-todo" type="submit" value="complete" />
                             </form>
                         {% else %}
                             <form action="/uncomplete" method="post">
                                 <input type="hidden" id="item-id" name="item-id" value="{{ item.id }}" />
-                                <input type="submit" value="uncomplete" />
+                                <input id="uncomplete-todo" type="submit" value="uncomplete" />
                             </form>
                         {% endif %}
                     </td>
                     <td>
                         <form action="/delete" method="post">
                             <input type="hidden" id="item-id" name="item-id" value="{{ item.id }}" />
-                            <input type="submit" value="delete" />
+                            <input id="delete-todo" type="submit" value="delete" />
                         </form>
                     </td>
                 </tr>
           {% endfor %}
-            </tbody>
+        </tbody>
         </table>
+        {% if view_model.should_show_all_done_items == False %}
+        <details>
+            <summary>Older Done items</summary>
+            <table class="table" id="older-done-todos">
+                <thead>
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Due date</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Complete</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for item in view_model.older_done_items %}
+                    <tr id="{{ item.id }}-row">
+                        <td>{{ item.title }}</td>
+                        <td>{{ item.description }}</td>
+                        <td>{{ item.due_date }}</td>
+                        <td>{{  item.status }}</td>
+                        <td>
+                        {% if item.status == not_started_status %}
+                            <form action="/complete" method="post">
+                                <input type="hidden" id="item-id" name="item-id" value="{{ item.id }}" />
+                                <input id="complete-todo" type="submit" value="complete" />
+                            </form>
+                        {% else %}
+                            <form action="/uncomplete" method="post">
+                                <input type="hidden" id="item-id" name="item-id" value="{{ item.id }}" />
+                                <input id="uncomplete-todo" type="submit" value="uncomplete" />
+                            </form>
+                        {% endif %}
+                        </td>
+                        <td>
+                            <form action="/delete" method="post">
+                                <input type="hidden" id="item-id" name="item-id" value="{{ item.id }}" />
+                                <input id="delete-todo" type="submit" value="delete" />
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </details>
+        {% endif %}
     </div>
   </div>
     <div class="row">
@@ -69,7 +115,7 @@
                             <span class="glyphicon glyphicon-th"></span>
                         </div>
                     </div>
-                    <input type="submit" value="submit" class="mt-2" />
+                    <input id='new-todo-submit' type="submit" value="submit" class="mt-2" />
                 </div>
             </form>
         </div>

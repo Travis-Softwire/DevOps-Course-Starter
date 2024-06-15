@@ -1,2 +1,3 @@
 NOT_STARTED = 'Not Started'
 COMPLETED = 'Completed'
+SHOW_ALL_DONE_ITEMS_THRESHOLD = 5

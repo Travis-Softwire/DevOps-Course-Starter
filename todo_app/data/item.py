@@ -4,11 +4,12 @@ from todo_app.constants import NOT_STARTED
 
 
 class Item:
-    def __init__(self, card_id, title, description, due_date, status=NOT_STARTED):
+    def __init__(self, card_id, title, description, due_date, last_modified, status=NOT_STARTED):
         self.id = card_id
         self.title = title
         self.description = description
         self.due_date = due_date
+        self.last_modified = last_modified
         self.status = status
 
     @classmethod
@@ -25,7 +26,14 @@ class Item:
         display_date = None
         if card.get('due', None):
             display_date = datetime.datetime.fromisoformat(card['due']).strftime("%c")
-        return cls(card['id'], card['name'], card['desc'], display_date, trello_list['name'])
+        return cls(
+            card['id'],
+            card['name'],
+            card['desc'],
+            display_date,
+            card['dateLastActivity'],
+            trello_list['name']
+        )
 
     @classmethod
     def items_from_trello_lists(cls, trello_lists):
