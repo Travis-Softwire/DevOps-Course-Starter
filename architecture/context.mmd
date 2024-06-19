@@ -3,4 +3,7 @@ flowchart BT
     subgraph App[&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspToDo App]
         ToDoApp
     end
+    subgraph External
+        Trello
+    end
     ToDoApp -->|Creates, Retrieves, Updates, and Deletes Cards data via REST API| Trello
