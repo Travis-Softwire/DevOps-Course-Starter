@@ -21,7 +21,7 @@ RUN poetry install --no-dev
 COPY ./todo_app ./todo_app
 ENTRYPOINT poetry run gunicorn --bind 0.0.0.0 'todo_app.app:create_app()'
 
-FROM base as tests
+FROM base as e2eTestBase
 ENV FLASK_DEBUG="true"
 RUN apt-get update -qqy && apt-get install -qqy wget gnupg unzip
 # Install Chrome
@@ -33,6 +33,8 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 RUN poetry install
 COPY .env.test ./
+
+FROM e2eTestBase as tests
 ENTRYPOINT ["poetry", "run", "pytest"]
 
 FROM base as watchUnitTests
@@ -40,3 +42,9 @@ ENV FLASK_DEBUG="true"
 RUN poetry install
 COPY .env.test ./
 ENTRYPOINT ["poetry", "run", "ptw", "--runner", "poetry run pytest", "--poll"]
+
+FROM e2eTestBase as pipelineTests
+COPY ./todo_app ./todo_app
+COPY ./tests ./tests
+COPY ./e2eTests ./e2eTests
+ENTRYPOINT ["poetry", "run", "pytest"]
