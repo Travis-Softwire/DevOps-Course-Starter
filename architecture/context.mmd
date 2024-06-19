@@ -1,0 +1,9 @@
+flowchart BT
+    User -->|Creates, views, completes, uncompletes and deletes ToDos| ToDoApp
+    subgraph App[&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspToDo App]
+        ToDoApp
+    end
+    subgraph External
+        Trello
+    end
+    ToDoApp -->|Creates, Retrieves, Updates, and Deletes Cards data via REST API| Trello

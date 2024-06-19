@@ -100,3 +100,50 @@ This file can now be safely committed to source control as the secrets within it
 
 Finally, you can run the ansible playbook by running `ansible-playbook ./ansible/setup_todo.yaml -i ./ansible/inventory.ini -e @<path to project folder>/ansible/secrets.enc --ask-vault-pass` on the control node. When prompted, enter the password that you entered when you encrypted the secrets file.
 When the playbook has finished running, you should be able to open the IP address of your managed node in the browser on your physical machine and immediately see the Todoapp running.
+
+## Preparing to deploy the App using Ansible
+
+These instructions assume that the control node and managed nodes are already set-up, that the control node has git and python installed on it, and that the control node has ssh keys for accessing the mananged nodes.
+There are many examples and tutorials on [how to set this up.](https://www.ibm.com/docs/en/storage-ceph/5?topic=installation-enabling-password-less-ssh-ansible)
+
+ssh into the control node and clone the repo into an appropriate folder using `git clone https://github.com/Travis-Softwire/DevOps-Course-Starter.git`.
+
+Check if ansible is installed using `ansible --version.` If it isn't, install it on the control node using `sudo pip install `
+
+Create a file on the control node called `secrets.enc` using `touch secrets.enc`.
+
+Using the text editor of your choice, e.g. `nano`, copy the contents of `ansible/secrets.enc.template` inside the project folder into a new file on the control node `ansible/secrets.enc`.
+You then need to replace the placeholders in the file with your actual Trello secrets etc. Then on the command node run `ansible-vault encrypt <your project folder>/ansible/secrets.enc`. When prompted, enter a password - this will be used to decrypt the secrets when ansible requires them.
+This file can now be safely committed to source control as the secrets within it are encrypted. You can also create multiple different secrets files for multiple environments if needed.
+
+Finally, you can run the ansible playbook by running `ansible-playbook ./ansible/setup_todo.yaml -i ./ansible/inventory.ini -e @<path to project folder>/ansible/secrets.enc --ask-vault-pass` on the control node. When prompted, enter the password that you entered when you encrypted the secrets file.
+When the playbook has finished running, you should be able to open the IP address of your managed node in the browser on your physical machine and immediately see the Todoapp running.
+
+## Running the App in a container
+
+### Setup
+
+You will need [Docker](https://docs.docker.com/desktop/wsl/) installed on your machine (using WSL if on a Windows machine).
+
+### Running the development build
+
+You can run the development build in docker using the command `docker compose up development` from the root of your project. 
+You should then be able to access the app via http://127.0.0.1:5000. 
+
+The development build binds your local source files and uses Flask's web server, so it will reflect any changs you make in real time, just like running the app locally outside of a container.
+
+### Running the production build
+
+You can run the production build and deploy it to a docker using the command `docker compose up production` from the root of your project. 
+
+### Running the test suite
+
+You can run all of the tests inside a container using the command `docker compose up runTests` from the root of your project.
+
+### Having the tests run every time there is a code change
+
+You can run the tests in watch mode using the command `docker compose up watchUnitTests` from the root of your project. This can be run alongside the development build above.
+
+## Viewing architecture diagrams
+
+The c4 architecture diagrams are in the `/architecture` folder at the root of the project. These are mermaid diagrams and can be viewed on any mermaid viewer - extensions for viewing mermaid diagrams are available for both Vs Code and Pycharm.

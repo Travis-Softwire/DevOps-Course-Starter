@@ -1,0 +1,47 @@
+classDiagram
+    App --> ViewModel
+    App --> TrelloItems
+    TrelloItems --> Item
+    TrelloItems --> TrelloClient
+    class App {
+        index:(/)
+        add_to_do:(/add)
+        complete_to_do:(/complete)
+        uncomplete_to_do:(/uncomplete)
+        delete_to_do:(/delete)
+    }
+    class TrelloItems {
+        get_items()
+        add_item()
+        update_status()
+        delete_item()
+    }
+    class Item {
+        id
+        title
+        description
+        due_date
+        last_modified
+        status
+        from_trello_card()
+        items_from_trello_lists()
+    }
+    class TrelloClient {
+        _list_ids
+        get_trello_lists()
+        _get_list_id()
+        create_trello_card()
+        move_trello_card()
+        delete_trello_card()
+        create_list()
+        create_board()
+        delete_board()
+    }
+    class ViewModel {
+        items
+        done_items
+        recent_done_items
+        older_done_items
+        not_started_items
+        should_show_all_done_items
+    }
