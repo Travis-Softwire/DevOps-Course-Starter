@@ -1,0 +1,30 @@
+name: Daily dependency check
+on:
+  schedule:
+    - cron: '0 9 * * *'
+
+jobs:
+  scan:
+    name: Daily dependency scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check for vulnerabilities
+        uses: snyk/actions/python-3.10@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+      - name: Report pipeline status
+        if: always()
+        id: slack
+        uses: slackapi/slack-github-action@v1.26.0
+        with:
+          payload: |
+            {
+              "name": "Daily dependency scan",
+              "status": "${{ job.status }}"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
