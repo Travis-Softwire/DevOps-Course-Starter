@@ -44,7 +44,7 @@ COPY .env.test ./
 ENTRYPOINT ["poetry", "run", "ptw", "--runner", "poetry run pytest", "--poll"]
 
 FROM e2e_test_base as pipelineTests
-COPY ./todo_app ./todo_app
 COPY ./tests ./tests
 COPY ./e2eTests ./e2eTests
+COPY ./todo_app ./todo_app
 ENTRYPOINT ["poetry", "run", "pytest"]
