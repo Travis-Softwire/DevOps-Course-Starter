@@ -12,7 +12,7 @@ import os
 import pytest
 
 from e2eTests.utils.temp_trello_boards import create_trello_board, delete_trello_board
-from todo_app import app
+from todo_app import create_app
 from dotenv import find_dotenv, load_dotenv
 import todo_app.data.trello_client
 
@@ -31,7 +31,7 @@ def app_with_temp_board():
         todo_app.data.trello_client.TRELLO_TO_DO_BOARD_ID = board_id
 
         # Construct the new application
-        application = app.create_app()
+        application = create_app()
 
         # Start the app in its own thread.
         thread = Thread(target=lambda: application.run(use_reloader=False))

@@ -47,4 +47,4 @@ FROM e2e_test_base as pipelineTests
 COPY ./todo_app ./todo_app
 COPY ./tests ./tests
 COPY ./e2eTests ./e2eTests
-ENTRYPOINT ["poetry", "run", "pytest"]
+ENTRYPOINT ["poetry", "run", "pytest", "e2eTests"]

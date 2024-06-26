@@ -8,3 +8,4 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - run: docker build --target pipelineTests .
+    - run: docker run --env-file ./.env todo-app:pipelineTests
