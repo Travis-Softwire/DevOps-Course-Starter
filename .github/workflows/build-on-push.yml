@@ -7,8 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - run: docker build --target pipeline_tests .
-    - run: docker run todo-app:pipeline_tests
+    - run: docker build --target pipeline_integration_tests .
+    - run: docker run todo-app:pipeline_integration_tests
     - run: docker build --target pipeline_e2e_tests .
     - run: >
         docker run 
