@@ -24,10 +24,10 @@ services:
       - "80:8000"
 
   runTests:
-    image: todo-app:tests
+    image: todo-app:local_tests
     build:
       context: .
-      target: tests
+      target: local_tests
     env_file:
       - .env
     volumes:
@@ -42,10 +42,10 @@ services:
         target: /opt/todoapp/e2eTests
 
   watchUnitTests:
-    image: todo-app:watchUnitTests
+    image: todo-app:watch_unit_tests
     build:
       context: .
-      target: watchUnitTests
+      target: watch_unit_tests
     env_file:
       - .env
     volumes:

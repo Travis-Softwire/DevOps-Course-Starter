@@ -34,17 +34,24 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
 RUN poetry install
 COPY .env.test ./
 
-FROM e2e_test_base as tests
+FROM e2e_test_base as local_tests
 ENTRYPOINT ["poetry", "run", "pytest"]
 
-FROM base as watchUnitTests
+FROM base as watch_unit_tests
 ENV FLASK_DEBUG="true"
 RUN poetry install
 COPY .env.test ./
 ENTRYPOINT ["poetry", "run", "ptw", "--runner", "poetry run pytest", "--poll"]
 
-FROM e2e_test_base as pipelineTests
+FROM base as pipeline_integration_tests
+ENV FLASK_DEBUG="true"
+RUN poetry install
+COPY .env.test ./
 COPY ./tests ./tests
+COPY ./todo_app ./todo_app
+ENTRYPOINT ["poetry", "run", "pytest"]
+
+FROM e2e_test_base as pipeline_e2e_tests
 COPY ./e2eTests ./e2eTests
 COPY ./todo_app ./todo_app
 ENTRYPOINT ["poetry", "run", "pytest"]
