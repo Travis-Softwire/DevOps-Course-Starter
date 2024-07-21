@@ -1,0 +1,63 @@
+name: Build and test
+on:
+  push:
+    paths:
+      - .github/workflows/**
+      - e2eTests/**
+      - tests/**
+      - todo_app/**
+      - Dockerfile
+      - poetry.lock
+  pull_request:
+    paths:
+      - .github/workflows/**
+      - e2eTests/**
+      - tests/**
+      - todo_app/**
+      - Dockerfile
+      - poetry.lock
+
+jobs:
+  build:
+    name: Build and test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Integration test build
+      run: docker build --target pipeline_integration_tests --tag todo-app:pipeline_integration_tests .
+
+    - name: Run integration tests
+      run: docker run todo-app:pipeline_integration_tests
+
+    - name: e2e tests build
+      run: docker build --target pipeline_e2e_tests --tag todo-app:pipeline_e2e_tests .
+
+    - name: Run e2e tests
+      run: >
+        docker run
+        -e FLASK_APP=todo_app/app
+        -e TRELLO_TO_DO_BOARD_ID=65cb37a378d7b6f10d62c208
+        -e TRELLO_ORGANIZATION_ID=65cb37900e446a315b3b1fbc
+        -e TRELLO_API_KEY='TEST_API_KEY'
+        -e TRELLO_API_TOKEN='TEST_API_TOKEN'
+        todo-app:pipeline_e2e_tests
+
+    - name: Check for vulnerabilities
+      uses: snyk/actions/python-3.10@master
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+    - name: Report pipeline status
+      if: always()
+      id: slack
+      uses: slackapi/slack-github-action@v1.26.0
+      with:
+        payload: |
+          {
+            "name": "${{ github.event.head_commit.message }}",
+            "status": "${{ job.status }}"
+          }
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}

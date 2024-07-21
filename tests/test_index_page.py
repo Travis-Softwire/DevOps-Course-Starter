@@ -4,8 +4,7 @@ import pytest
 import requests
 from dotenv import find_dotenv, load_dotenv
 import todo_app.data.trello_client
-
-from todo_app import app
+from todo_app import create_app
 
 @pytest.fixture
 def client():
@@ -15,7 +14,7 @@ def client():
     load_dotenv(file_path, override=True)
     importlib.reload(todo_app.data.trello_client)
 
-    test_app = app.create_app()
+    test_app = create_app()
 
     # Use the app to create a test_client that can be used in our tests.
     with test_app.test_client() as client:
