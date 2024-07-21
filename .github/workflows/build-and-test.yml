@@ -40,8 +40,8 @@ jobs:
         -e FLASK_APP=todo_app/app
         -e TRELLO_TO_DO_BOARD_ID=65cb37a378d7b6f10d62c208
         -e TRELLO_ORGANIZATION_ID=65cb37900e446a315b3b1fbc
-        -e TRELLO_API_KEY=$TRELLO_API_KEY
-        -e TRELLO_API_TOKEN=$TRELLO_API_TOKEN
+        -e TRELLO_API_KEY='TEST_API_KEY'
+        -e TRELLO_API_TOKEN='TEST_API_TOKEN'
         todo-app:pipeline_e2e_tests
 
     - name: Check for vulnerabilities
