@@ -101,24 +101,6 @@ This file can now be safely committed to source control as the secrets within it
 Finally, you can run the ansible playbook by running `ansible-playbook ./ansible/setup_todo.yaml -i ./ansible/inventory.ini -e @<path to project folder>/ansible/secrets.enc --ask-vault-pass` on the control node. When prompted, enter the password that you entered when you encrypted the secrets file.
 When the playbook has finished running, you should be able to open the IP address of your managed node in the browser on your physical machine and immediately see the Todoapp running.
 
-## Preparing to deploy the App using Ansible
-
-These instructions assume that the control node and managed nodes are already set-up, that the control node has git and python installed on it, and that the control node has ssh keys for accessing the mananged nodes.
-There are many examples and tutorials on [how to set this up.](https://www.ibm.com/docs/en/storage-ceph/5?topic=installation-enabling-password-less-ssh-ansible)
-
-ssh into the control node and clone the repo into an appropriate folder using `git clone https://github.com/Travis-Softwire/DevOps-Course-Starter.git`.
-
-Check if ansible is installed using `ansible --version.` If it isn't, install it on the control node using `sudo pip install `
-
-Create a file on the control node called `secrets.enc` using `touch secrets.enc`.
-
-Using the text editor of your choice, e.g. `nano`, copy the contents of `ansible/secrets.enc.template` inside the project folder into a new file on the control node `ansible/secrets.enc`.
-You then need to replace the placeholders in the file with your actual Trello secrets etc. Then on the command node run `ansible-vault encrypt <your project folder>/ansible/secrets.enc`. When prompted, enter a password - this will be used to decrypt the secrets when ansible requires them.
-This file can now be safely committed to source control as the secrets within it are encrypted. You can also create multiple different secrets files for multiple environments if needed.
-
-Finally, you can run the ansible playbook by running `ansible-playbook ./ansible/setup_todo.yaml -i ./ansible/inventory.ini -e @<path to project folder>/ansible/secrets.enc --ask-vault-pass` on the control node. When prompted, enter the password that you entered when you encrypted the secrets file.
-When the playbook has finished running, you should be able to open the IP address of your managed node in the browser on your physical machine and immediately see the Todoapp running.
-
 ## Running the App in a container
 
 ### Setup
@@ -135,6 +117,20 @@ The development build binds your local source files and uses Flask's web server,
 ### Running the production build
 
 You can run the production build and deploy it to a docker using the command `docker compose up production` from the root of your project. 
+
+### Deploying the production build to Azure App service
+
+To deploy a new version of the production build to Azure App service, first publish the latest build to docker hub:
+- Run `docker login` to login to docker hub
+- Use `docker build --target production --tag trwoodward/todo-app:production` to build and tag the image
+- Then push the image with `docker push trwoodward/todo-app:production`
+The published image can be found [here](https://hub.docker.com/r/trwoodward/todo-app/tags)
+
+To trigger the App service to pull the latest image and restart:
+- Find the webhook url by logging into the Azure portal, navigating to the `travis-woodward-todo-app` App service, and then to Deployment -> Deployment Center -> Settings tab
+- Invoke the webhook with `curl -v -X POST '<webhook>'` in a Bash shell
+
+The deployed app should then be available at https://travis-woodward-todo-app.azurewebsites.net/ 
 
 ### Running the test suite
 
