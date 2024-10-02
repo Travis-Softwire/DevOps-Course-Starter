@@ -5,7 +5,7 @@ flowchart BT
     ToDoApp <-->|Requests ToDo data from \nand provides user form data to| DataLayer(Data Layer)
     ToDoApp <-->|Injects ToDo data and receives formatted data\n for populating the html| ViewModel
     HtmlTemplate(Html Templates) -->|Provides html to be populated| ToDoApp
-    DataLayer <-->|Retrieves, Creates, Updates, and Deletes Cards data| Trello
+    DataLayer <-->|Retrieves, Creates, Updates, and Deletes ToDo data from Cosmos| CosmosDB
     subgraph App [ToDo App]
         Gunicorn
         Flask
@@ -15,6 +15,6 @@ flowchart BT
         DataLayer
     end
     subgraph External
-        Trello
+        CosmosDB
     end
 

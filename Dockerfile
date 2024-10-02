@@ -1,4 +1,4 @@
-FROM python:3.11.9-slim-bullseye as base
+FROM python:3.11.9-slim-bullseye AS base
 RUN apt-get update && apt-get install curl -y
 RUN export POETRY_HOME=/usr/local; curl -sSL https://install.python-poetry.org | python3.11 -
 EXPOSE 8000
@@ -9,12 +9,12 @@ RUN poetry install --no-dev --no-root
 FROM base AS development
 ENV FLASK_DEBUG="true"
 RUN poetry install
-Entrypoint poetry run flask run --host=0.0.0.0
+ENTRYPOINT poetry run flask run --host=0.0.0.0
 
 FROM base AS debug
 ENV FLASK_DEBUG="true"
 RUN poetry install
-Entrypoint tail -f /dev/null
+ENTRYPOINT tail -f /dev/null
 
 FROM base AS production
 RUN poetry install --no-dev

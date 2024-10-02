@@ -21,6 +21,18 @@ jobs:
   test:
     name: Build and test
     runs-on: ubuntu-latest
+    services:
+      local_mongodb:
+        image: mongo
+        env:
+          MONGO_INITDB_ROOT_USERNAME: root
+          MONGO_INITDB_ROOT_PASSWORD: notarealpassword
+        ports:
+          - 27017:27017
+        options: >-
+          --name local_mongo
+          --quiet
+
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -70,10 +82,8 @@ jobs:
       run: >
         docker run
         -e FLASK_APP=todo_app/app
-        -e TRELLO_TO_DO_BOARD_ID=65cb37a378d7b6f10d62c208
-        -e TRELLO_ORGANIZATION_ID=65cb37900e446a315b3b1fbc
-        -e TRELLO_API_KEY='TEST_API_KEY'
-        -e TRELLO_API_TOKEN='TEST_API_TOKEN'
+        -e COSMOS_CONNECTION_STRING="mongodb://root:notarealpassword@localhost:27017"
+        --network host
         todo-app:pipeline_e2e_tests
 
     - name: Check for vulnerabilities
@@ -89,7 +99,7 @@ jobs:
         payload: |
           {
             "name": ${{ toJson(format('Build and test: {0}', github.event.head_commit.message)) }},
-            "status": "${{ job.status }}"
+            "status": "${{ job.status == 'success' && 'Success :tick:' || 'Failure :no-cross:' }}"
           }
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
@@ -97,7 +107,7 @@ jobs:
   deploy:
     name: Build and deploy
     needs: test
-    if:  github.event_name == 'push' && github.ref == 'refs/heads/exercise-9'
+    if:  github.event_name == 'push' && github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -147,7 +157,7 @@ jobs:
           payload: |
             {
               "name": ${{ toJson(format('Deploy: {0}', github.event.head_commit.message)) }},
-              "status": "${{ job.status }}"
+              "status": "${{ job.status == 'success' && 'Success :tick:' || 'Failure :no-cross:' }}"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
