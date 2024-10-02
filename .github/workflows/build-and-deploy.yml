@@ -89,7 +89,7 @@ jobs:
         payload: |
           {
             "name": ${{ toJson(format('Build and test: {0}', github.event.head_commit.message)) }},
-            "status": "${{ job.status }}"
+            "status": "${{ job.status }} ${{ job.status == 'success' && ':tick:' || ':no-cross:' }}"
           }
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
@@ -147,7 +147,7 @@ jobs:
           payload: |
             {
               "name": ${{ toJson(format('Deploy: {0}', github.event.head_commit.message)) }},
-              "status": "${{ job.status }} ${{ job.status == 'success' && ':tick:' }} ${{ job.status == 'failure' && ':no-cross:' }}"
+              "status": "${{ job.status }} ${{ job.status == 'success' && ':tick:' || ':no-cross:' }}"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
