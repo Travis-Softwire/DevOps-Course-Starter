@@ -97,7 +97,7 @@ jobs:
   deploy:
     name: Build and deploy
     needs: test
-    if:  github.event_name == 'push' && github.ref == 'refs/heads/exercise-9'
+    if:  github.event_name == 'push' && github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -147,7 +147,7 @@ jobs:
           payload: |
             {
               "name": ${{ toJson(format('Deploy: {0}', github.event.head_commit.message)) }},
-              "status": "${{ job.status }}"
+              "status": "${{ job.status }} ${{ job.status == 'success' && ':tick:' }} ${{ job.status == 'failure' && ':no-cross:' }}"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
