@@ -3,7 +3,7 @@ from datetime import datetime
 from todo_app.constants import NOT_STARTED
 from todo_app.data.item import Item
 from todo_app.data.todo_item_repository import TodoItemRepository
-from todo_app.data.trello_client import TrelloClient
+from todo_app.data.migration.trello_client import TrelloClient
 
 
 def from_trello_card(card, trello_list):

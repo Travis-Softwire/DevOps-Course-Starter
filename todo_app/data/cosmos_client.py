@@ -27,7 +27,7 @@ class CosmosClient:
         return list(map(todo_from_cosmos_item, list(self.collection.find({}))))
 
     def create_item(self, title, description, due_date):
-        self.collection.insert_one({
+        return self.collection.insert_one({
             'title': title,
             'description': description,
             'due_date': due_date,

@@ -12,3 +12,4 @@ Dockerfile
 img.png
 README.md
 **/__pycache__
+**/migration

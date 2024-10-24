@@ -1,11 +1,13 @@
 services:
   development:
     image: todo-app:development
+    depends_on:
+      - localdb
     build:
       context: .
       target: development
     env_file:
-      - .env
+      - .env.local
     ports:
       - "5000:5000"
     volumes:
@@ -55,4 +57,20 @@ services:
       - type: bind
         source: ./tests
         target: /opt/todoapp/tests
+
+  localdb:
+    image: mongo
+    restart: always
+    container_name: local_mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: notarealpassword
+    command: mongod --quiet --logpath /var/log/mongodb/mongod.log
+    volumes:
+      - "localdb:/data/db"
+    ports:
+      - "27017:27017"
+
+volumes:
+  localdb:
 

@@ -10,7 +10,7 @@ class CosmosItemRepository(TodoItemRepository):
         return self.cosmos_client.list_items()
 
     def add_item(self, title, description, due_date):
-        self.cosmos_client.create_item(title=title, description=description, due_date=due_date)
+        return self.cosmos_client.create_item(title=title, description=description, due_date=due_date)
 
     def update_status(self, item_id, status):
         self.cosmos_client.update_item(item_id=item_id, status=status)
