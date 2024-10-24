@@ -71,6 +71,7 @@ jobs:
         docker run
         -e FLASK_APP=todo_app/app
         -e COSMOS_CONNECTION_STRING="TEST_CONNECTION_STRING"
+        -it --rm -v $PWD:$PWD -w $PWD -v /var/run/docker.sock:/var/run/docker.sock
         todo-app:pipeline_e2e_tests
 
     - name: Check for vulnerabilities
