@@ -118,12 +118,14 @@ The development build binds your local source files and uses Flask's web server,
 
 You can run the production build and deploy it to a docker using the command `docker compose up production` from the root of your project. 
 
-### Deploying the production build to Azure App service
+### Manually deploying the production build to Azure App service
 
-To deploy a new version of the production build to Azure App service, first publish the latest build to docker hub:
+The pipeline on github actions will automatically deploy a build of master to Azure App service on merge.
+
+To manually deploy a new version of the production build to Azure App service, first publish the latest build to docker hub:
 - Run `docker login` to login to docker hub
-- Use `docker build --target production --tag trwoodward/todo-app:production` to build and tag the image
-- Then push the image with `docker push trwoodward/todo-app:production`
+- Use `docker build --target production --tag trwoodward/todo-app:latest .` to build and tag the image
+- Then push the image with `docker push trwoodward/todo-app:latest`
 The published image can be found [here](https://hub.docker.com/r/trwoodward/todo-app/tags)
 
 To trigger the App service to pull the latest image and restart:
