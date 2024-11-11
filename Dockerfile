@@ -45,13 +45,16 @@ ENTRYPOINT ["poetry", "run", "ptw", "--runner", "poetry run pytest", "--poll"]
 
 FROM base AS pipeline_integration_tests
 ENV FLASK_DEBUG="true"
+ENV SECRET_KEY="notarealsecretykey12345"
 RUN poetry install
 COPY .env.test ./
 COPY ./tests ./tests
+COPY ./test_utils ./test_utils
 COPY ./todo_app ./todo_app
 ENTRYPOINT ["poetry", "run", "pytest"]
 
 FROM e2e_test_base AS pipeline_e2e_tests
 COPY ./e2eTests ./e2eTests
+COPY ./test_utils ./test_utils
 COPY ./todo_app ./todo_app
 ENTRYPOINT ["poetry", "run", "pytest"]

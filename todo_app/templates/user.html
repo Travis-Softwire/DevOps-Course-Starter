@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+{% block title %}To-Do App{% endblock %}
+
+{% block content %}
+  <div class="jumbotron">
+    <h1 class="display-4">To-Do App</h1>
+    <p class="lead">Just another to-do app.</p>
+  </div>
+
+  <div class="row mb-5">
+    <div class="col-md-12">
+      <h2 class="mb-5">Users</h2>
+        <table class="table" id="users">
+            <thead>
+                <tr>
+                    <th scope="col">Github ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Roles</th>
+                    <th scope="col">Admin</th>
+                    <th scope="col">Writer</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for user in view_model.users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.roles|join(', ') }}</td>
+                    <td>
+                        {% if 'Admin' not in user.roles %}
+                            <form action="/make-admin" method="post">
+                                <input type="hidden" id="user-id" name="user-id" value="{{ user.id }}" />
+                                <input id="make-admin" type="submit" value="make admin" />
+                            </form>
+                        {% else %}
+                            <form action="/remove-admin" method="post">
+                                <input type="hidden" id="user-id" name="user-id" value="{{ user.id }}" />
+                                <input id="remove-admin" type="submit" value="remove admin" />
+                            </form>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if 'Writer' not in user.roles %}
+                            <form action="/make-writer" method="post">
+                                <input type="hidden" id="user-id" name="user-id" value="{{ user.id }}" />
+                                <input id="make-writer" type="submit" value="make writer" />
+                            </form>
+                        {% else %}
+                            <form action="/remove-writer" method="post">
+                                <input type="hidden" id="user-id" name="user-id" value="{{ user.id }}" />
+                                <input id="remove-writer" type="submit" value="remove writer" />
+                            </form>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <form action="/delete-user" method="post">
+                            <input type="hidden" id="user-id" name="user-id" value="{{ user.id }}" />
+                            <input id="delete-user" type="submit" value="delete" />
+                        </form>
+                    </td>
+                </tr>
+          {% endfor %}
+        </tbody>
+        </table>
+    </div>
+  </div>
+{% endblock %}
