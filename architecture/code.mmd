@@ -1,8 +1,8 @@
 classDiagram
     App --> ViewModel
-    App --> TrelloItems
-    TrelloItems --> Item
-    TrelloItems --> TrelloClient
+    App --> CosmosItemRepository
+    CosmosItemRepository --> Item
+    CosmosItemRepository --> CosmosClient
     class App {
         index:(/)
         add_to_do:(/add)
@@ -10,7 +10,7 @@ classDiagram
         uncomplete_to_do:(/uncomplete)
         delete_to_do:(/delete)
     }
-    class TrelloItems {
+    class CosmosItemRepository {
         get_items()
         add_item()
         update_status()
@@ -26,16 +26,11 @@ classDiagram
         from_trello_card()
         items_from_trello_lists()
     }
-    class TrelloClient {
-        _list_ids
-        get_trello_lists()
-        _get_list_id()
-        create_trello_card()
-        move_trello_card()
-        delete_trello_card()
-        create_list()
-        create_board()
-        delete_board()
+    class CosmosClient {
+        list_items()
+        create_item()
+        update_item()
+        delete_item()
     }
     class ViewModel {
         items

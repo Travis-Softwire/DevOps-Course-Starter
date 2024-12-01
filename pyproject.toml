@@ -5,15 +5,16 @@ description = "A simple ToDo app for your DevOps apprenticeship"
 authors = []
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.9"
 Flask = "^2.2.5"
 python-dotenv = "^0.14.0"
 requests = "^2.31.0"
 pytest = "^8.1.1"
 pytest-dotenv = "^0.5.2"
 selenium = "^4.19.0"
-vcrpy = "^6.0.1"
 gunicorn = "^22.0.0"
+pymongo = "^4.9.1"
+mongomock = "^4.2.0.post1"
 
 [tool.poetry.dev-dependencies]
 

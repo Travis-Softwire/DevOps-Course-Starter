@@ -1,51 +1,41 @@
+import os
 from time import sleep
 from threading import Thread
 
-import vcr
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 
 import importlib
-import os
 import pytest
 
-from e2eTests.utils.temp_trello_boards import create_trello_board, delete_trello_board
 from todo_app import create_app
 from dotenv import find_dotenv, load_dotenv
-import todo_app.data.trello_client
+import todo_app.data.cosmos_client
 
 
 @pytest.fixture(scope='module')
 def app_with_temp_board():
-    # Create the new board & update the board id environment variable
-    with vcr.use_cassette(
-            "e2eTests/cassettes/e2etest_setup.yaml", filter_query_parameters=['key', 'token'], ignore_localhost=True
-    ):
-        file_path = find_dotenv('.env')
-        load_dotenv(file_path, override=True)
-        importlib.reload(todo_app.data.trello_client)
-        board_id = create_trello_board("test board")
-        original_board_id = os.environ.get('TRELLO_TO_DO_BOARD_ID')
-        todo_app.data.trello_client.TRELLO_TO_DO_BOARD_ID = board_id
+    # Use our test integration config instead of the 'real' version
+    file_path = find_dotenv('./.env.local')
+    load_dotenv(file_path, override=True)
+    importlib.reload(todo_app.data.cosmos_client)
 
-        # Construct the new application
-        application = create_app()
+    # Construct the new application
+    application = create_app()
 
-        # Start the app in its own thread.
-        thread = Thread(target=lambda: application.run(use_reloader=False))
-        thread.daemon = True
-        thread.start()
-        # Give the app a moment to start
-        sleep(1)
+    # Start the app in its own thread.
+    thread = Thread(target=lambda: application.run(use_reloader=False))
+    thread.daemon = True
+    thread.start()
+    # Give the app a moment to start
+    sleep(1)
 
-        yield application
+    yield application
 
-        # Tear Down
-        thread.join(1)
-        delete_trello_board(board_id)
-        todo_app.data.trello_client.TRELLO_TO_DO_BOARD_ID = original_board_id
+    # Tear Down
+    thread.join(1)
 
 
 @pytest.fixture(scope="module")
@@ -58,7 +48,6 @@ def driver():
         yield driver
 
 
-@vcr.use_cassette("e2eTests/cassettes/e2etest.yaml", filter_query_parameters=['key', 'token'], ignore_localhost=True)
 def test_task_journey(driver, app_with_temp_board):
     driver.get('http://localhost:5000/')
 

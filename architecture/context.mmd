@@ -4,6 +4,6 @@ flowchart BT
         ToDoApp
     end
     subgraph External
-        Trello
+        CosmosDB
     end
-    ToDoApp -->|Creates, Retrieves, Updates, and Deletes Cards data via REST API| Trello
+    ToDoApp -->|Creates, Retrieves, Updates, and Deletes ToDo data in database| CosmosDB

@@ -112,7 +112,7 @@ You will need [Docker](https://docs.docker.com/desktop/wsl/) installed on your m
 You can run the development build in docker using the command `docker compose up development` from the root of your project. 
 You should then be able to access the app via http://127.0.0.1:5000. 
 
-The development build binds your local source files and uses Flask's web server, so it will reflect any changs you make in real time, just like running the app locally outside of a container.
+The development build binds your local source files and uses Flask's web server, so it will reflect any changes you make in real time, just like running the app locally outside of a container.
 
 ### Running the production build
 
