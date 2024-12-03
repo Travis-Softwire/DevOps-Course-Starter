@@ -38,18 +38,9 @@ $ cp .env.template .env  # (first time only)
 
 The `.env` file is used by flask to set environment variables when running `flask run`. This enables things like development mode (which also enables features like hot reloading when you make a file change).
 
-## Setting up Trello
+## Database
 
-You'll need to set-up a [Trello account](https://trello.com/signup), Trello board, a 'To-Do' list in that board, and create a [Trello API key](https://developer.atlassian.com/cloud/trello/guides/rest-api/api-introduction/#managing-your-api-key). 
-Then create a API token:Create a API Token for Trello.
-This can be done by clicking the “Token” link on the same page where your API key is displayed
-![img.png](img.png)
-
-Once you've done this, replace the TRELLO_API_KEY and TRELLO_API_TOKEN values in your .env file with you API key and token.
-
-
-
-Finally, [get your board id](https://developer.atlassian.com/cloud/trello/guides/rest-api/api-introduction/#your-first-api-call) and replace the TRELLO_TO_DO_BOARD_ID with your board's ID. Do the same with the organisation id (the `idOrganization` field in the same API response), replacing the TRELLO_ORGANIZATION_ID with it.
+The project persists its data in CosmosDB which encrypts the data stored in it at rest by default.
 
 ## Running the App
 
@@ -108,6 +99,8 @@ When the playbook has finished running, you should be able to open the IP addres
 You will need [Docker](https://docs.docker.com/desktop/wsl/) installed on your machine (using WSL if on a Windows machine).
 
 ### Running the development build
+
+Before running the development build you will need to add the Github client secret to the `.env.local` file in the place indicated.
 
 You can run the development build in docker using the command `docker compose up development` from the root of your project. 
 You should then be able to access the app via http://127.0.0.1:5000. 

@@ -3,9 +3,10 @@ from datetime import datetime
 from todo_app.constants import COMPLETED, NOT_STARTED, SHOW_ALL_DONE_ITEMS_THRESHOLD
 
 
-class ViewModel:
-    def __init__(self, items):
+class ToDoViewModel:
+    def __init__(self, items, user_can_write):
         self._items = items
+        self._user_can_write = user_can_write
 
     @property
     def items(self):
@@ -40,3 +41,8 @@ class ViewModel:
     def should_show_all_done_items(self):
         return (len(self.done_items) <= SHOW_ALL_DONE_ITEMS_THRESHOLD
                 or len(self.older_done_items) == 0)
+
+    @property
+    def user_can_write(self):
+        return self._user_can_write
+

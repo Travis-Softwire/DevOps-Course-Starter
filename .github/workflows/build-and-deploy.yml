@@ -82,6 +82,7 @@ jobs:
       run: >
         docker run
         -e FLASK_APP=todo_app/app
+        -e SECRET_KEY="notarealsecretkey12345"
         -e COSMOS_CONNECTION_STRING="mongodb://root:notarealpassword@localhost:27017"
         --network host
         todo-app:pipeline_e2e_tests
