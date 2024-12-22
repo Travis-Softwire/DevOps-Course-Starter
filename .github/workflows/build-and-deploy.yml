@@ -156,6 +156,15 @@ jobs:
           rm -rf /tmp/.buildx-cache
           mv /tmp/.buildx-cache-new /tmp/.buildx-cache   
 
+      - name: Install terraform
+        run: |
+          apk add --update-cache curl >
+          TERRAFORM_VERSION=1.9.0 
+          && FILENAME=terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+          && curl -LO https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/${FILENAME}
+          && unzip FILENAME -d /usr/local/bin
+          && rm FILENAME
+
       - name: Terraform Init
         run: terraform init
 
