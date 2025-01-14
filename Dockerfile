@@ -4,7 +4,7 @@ RUN export POETRY_HOME=/usr/local; curl -sSL https://install.python-poetry.org |
 EXPOSE 8000
 WORKDIR /opt/todoapp
 COPY ["poetry.lock", "poetry.toml", "pyproject.toml", "./"]
-RUN poetry install --without dev --no-root
+RUN poetry install --no-root --without dev
 
 FROM base AS development
 ENV FLASK_DEBUG="true"
