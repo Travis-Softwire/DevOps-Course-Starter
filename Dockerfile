@@ -31,7 +31,6 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
   && apt-get -qqy install google-chrome-stable \
   && rm /etc/apt/sources.list.d/google-chrome.list \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
-RUN poetry install
 COPY .env.test ./
 
 FROM e2e_test_base AS local_tests
@@ -46,7 +45,6 @@ ENTRYPOINT ["poetry", "run", "ptw", "--runner", "poetry run pytest", "--poll"]
 FROM base AS pipeline_integration_tests
 ENV FLASK_DEBUG="true"
 ENV SECRET_KEY="notarealsecretykey12345"
-RUN poetry install
 COPY .env.test ./
 COPY ./tests ./tests
 COPY ./test_utils ./test_utils
