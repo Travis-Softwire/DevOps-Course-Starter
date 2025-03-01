@@ -28,7 +28,6 @@ def app_with_temp_board(monkeypatch):
 
     # Construct the new application
     application = create_app()
-    initialise_auth(application)
     application.config["LOGIN_DISABLED"] = True
 
     # Start the app in its own thread.
