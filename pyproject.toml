@@ -15,8 +15,7 @@ selenium = "^4.19.0"
 gunicorn = "^22.0.0"
 pymongo = "^4.9.1"
 mongomock = "^4.2.0.post1"
-
-[tool.poetry.dev-dependencies]
+flask-login = "^0.6.3"
 
 [tool.poetry.group.dev.dependencies]
 pytest-watch = "^4.2.0"

@@ -1,4 +1,3 @@
-import os
 from time import sleep
 from threading import Thread
 
@@ -9,21 +8,27 @@ from selenium.webdriver.support import expected_conditions
 
 import importlib
 import pytest
+import pymongo
 
+from test_utils.MockCurrentUser import MockCurrentUser
 from todo_app import create_app
 from dotenv import find_dotenv, load_dotenv
 import todo_app.data.cosmos_client
+from todo_app.auth.setup_auth import initialise_auth
 
 
-@pytest.fixture(scope='module')
-def app_with_temp_board():
+@pytest.fixture
+def app_with_temp_board(monkeypatch):
     # Use our test integration config instead of the 'real' version
     file_path = find_dotenv('./.env.local')
     load_dotenv(file_path, override=True)
     importlib.reload(todo_app.data.cosmos_client)
 
+    MockCurrentUser.setup_mock_user(monkeypatch, pymongo)
+
     # Construct the new application
     application = create_app()
+    application.config["LOGIN_DISABLED"] = True
 
     # Start the app in its own thread.
     thread = Thread(target=lambda: application.run(use_reloader=False))
@@ -36,6 +41,7 @@ def app_with_temp_board():
 
     # Tear Down
     thread.join(1)
+    MockCurrentUser.delete_mock_user(pymongo)
 
 
 @pytest.fixture(scope="module")
@@ -50,7 +56,6 @@ def driver():
 
 def test_task_journey(driver, app_with_temp_board):
     driver.get('http://localhost:5000/')
-
     driver.find_element(by=By.ID, value="title").send_keys("Test title")
     driver.find_element(by=By.ID, value="description").send_keys("Test description")
     driver.find_element(by=By.ID, value="due-date").send_keys("01/01/2025")
@@ -60,7 +65,7 @@ def test_task_journey(driver, app_with_temp_board):
     wait = WebDriverWait(driver, 5)
     wait.until(
         lambda inner_driver: expected_conditions.all_of(
-            expected_conditions.text_to_be_present_in_element((By.ID, "todos"),"Test title"),
+            expected_conditions.text_to_be_present_in_element((By.ID, "todos"), "Test title"),
             expected_conditions.text_to_be_present_in_element((By.ID, "todos"), "Not Started"),
         )
     )

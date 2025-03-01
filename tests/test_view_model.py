@@ -2,7 +2,7 @@ from datetime import datetime
 
 from todo_app.constants import NOT_STARTED, COMPLETED
 from todo_app.data.item import Item
-from todo_app.data.view_model import ViewModel
+from todo_app.data.todo_view_model import ToDoViewModel
 
 
 def test_done_items_returns_all_done_items():
@@ -19,7 +19,7 @@ def test_done_items_returns_all_done_items():
             status=status
         )
         test_items.append(item)
-    view_model = ViewModel(test_items)
+    view_model = ToDoViewModel(test_items, True)
 
     # Act
     done_items = view_model.done_items
@@ -48,7 +48,7 @@ def test_not_started_items_returns_all_not_started_items():
             status=status
         )
         test_items.append(item)
-    view_model = ViewModel(test_items)
+    view_model = ToDoViewModel(test_items, True)
 
     # Act
     not_started_items = view_model.not_started_items
@@ -80,7 +80,7 @@ def test_should_show_all_done_items_returns_true_for_5_done_items():
             status=status
         )
         test_items.append(item)
-    view_model = ViewModel(test_items)
+    view_model = ToDoViewModel(test_items, True)
 
     # Act
     should_show_all_done_items = view_model.should_show_all_done_items
@@ -103,7 +103,7 @@ def test_should_show_all_done_items_returns_true_for_more_than_5_done_items_but_
             status=status
         )
         test_items.append(item)
-    view_model = ViewModel(test_items)
+    view_model = ToDoViewModel(test_items, True)
 
     # Act
     should_show_all_done_items = view_model.should_show_all_done_items
@@ -126,7 +126,7 @@ def test_should_show_all_done_items_returns_false_for_more_than_5_done_items():
             status=status
         )
         test_items.append(item)
-    view_model = ViewModel(test_items)
+    view_model = ToDoViewModel(test_items, True)
 
     # Act
     should_show_all_done_items = view_model.should_show_all_done_items
@@ -150,7 +150,7 @@ def test_recent_done_items_includes_only_completed_items_modified_today():
             status=status
         )
         test_items.append(item)
-    view_model = ViewModel(test_items)
+    view_model = ToDoViewModel(test_items, True)
 
     # Act
     recent_done_items = view_model.recent_done_items
@@ -175,7 +175,7 @@ def test_older_done_items_includes_only_completed_items_not_modified_today():
             status=status
         )
         test_items.append(item)
-    view_model = ViewModel(test_items)
+    view_model = ToDoViewModel(test_items, True)
 
     # Act
     older_done_items = view_model.older_done_items

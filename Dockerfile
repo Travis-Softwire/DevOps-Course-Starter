@@ -4,7 +4,7 @@ RUN export POETRY_HOME=/usr/local; curl -sSL https://install.python-poetry.org |
 EXPOSE 8000
 WORKDIR /opt/todoapp
 COPY ["poetry.lock", "poetry.toml", "pyproject.toml", "./"]
-RUN poetry install --no-dev --no-root
+RUN poetry install --no-root --without dev
 
 FROM base AS development
 ENV FLASK_DEBUG="true"
@@ -31,7 +31,6 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
   && apt-get -qqy install google-chrome-stable \
   && rm /etc/apt/sources.list.d/google-chrome.list \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
-RUN poetry install
 COPY .env.test ./
 
 FROM e2e_test_base AS local_tests
@@ -45,13 +44,15 @@ ENTRYPOINT ["poetry", "run", "ptw", "--runner", "poetry run pytest", "--poll"]
 
 FROM base AS pipeline_integration_tests
 ENV FLASK_DEBUG="true"
-RUN poetry install
+ENV SECRET_KEY="notarealsecretykey12345"
 COPY .env.test ./
 COPY ./tests ./tests
+COPY ./test_utils ./test_utils
 COPY ./todo_app ./todo_app
 ENTRYPOINT ["poetry", "run", "pytest"]
 
 FROM e2e_test_base AS pipeline_e2e_tests
 COPY ./e2eTests ./e2eTests
+COPY ./test_utils ./test_utils
 COPY ./todo_app ./todo_app
 ENTRYPOINT ["poetry", "run", "pytest"]

@@ -17,8 +17,10 @@
                     <th scope="col">Description</th>
                     <th scope="col">Due date</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Complete</th>
-                    <th scope="col">Delete</th>
+                    {% if view_model.user_can_write %}
+                        <th scope="col">Complete</th>
+                        <th scope="col">Delete</th>
+                    {% endif %}
                 </tr>
             </thead>
             <tbody>
@@ -29,23 +31,27 @@
                     <td>{{ item.due_date }}</td>
                     <td>{{  item.status }}</td>
                     <td>
-                        {% if item.status == not_started_status %}
-                            <form action="/complete" method="post">
-                                <input type="hidden" id="item-id" name="item-id" value="{{ item.id }}" />
-                                <input id="complete-todo" type="submit" value="complete" />
-                            </form>
-                        {% else %}
-                            <form action="/uncomplete" method="post">
-                                <input type="hidden" id="item-id" name="item-id" value="{{ item.id }}" />
-                                <input id="uncomplete-todo" type="submit" value="uncomplete" />
-                            </form>
+                        {% if view_model.user_can_write %}
+                            {% if item.status == not_started_status %}
+                                <form action="/complete" method="post">
+                                    <input type="hidden" id="item-id" name="item-id" value="{{ item.id }}" />
+                                    <input id="complete-todo" type="submit" value="complete" />
+                                </form>
+                            {% else %}
+                                <form action="/uncomplete" method="post">
+                                    <input type="hidden" id="item-id" name="item-id" value="{{ item.id }}" />
+                                    <input id="uncomplete-todo" type="submit" value="uncomplete" />
+                                </form>
+                            {% endif %}
                         {% endif %}
                     </td>
                     <td>
-                        <form action="/delete" method="post">
-                            <input type="hidden" id="item-id" name="item-id" value="{{ item.id }}" />
-                            <input id="delete-todo" type="submit" value="delete" />
-                        </form>
+                        {% if view_model.user_can_write %}
+                            <form action="/delete" method="post">
+                                <input type="hidden" id="item-id" name="item-id" value="{{ item.id }}" />
+                                <input id="delete-todo" type="submit" value="delete" />
+                            </form>
+                        {% endif %}
                     </td>
                 </tr>
           {% endfor %}
@@ -61,8 +67,10 @@
                         <th scope="col">Description</th>
                         <th scope="col">Due date</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Complete</th>
-                        <th scope="col">Delete</th>
+                        {% if view_model.user_can_write %}
+                            <th scope="col">Complete</th>
+                            <th scope="col">Delete</th>
+                        {% endif %}
                     </tr>
                 </thead>
                 <tbody>
@@ -73,23 +81,27 @@
                         <td>{{ item.due_date }}</td>
                         <td>{{  item.status }}</td>
                         <td>
-                        {% if item.status == not_started_status %}
-                            <form action="/complete" method="post">
-                                <input type="hidden" id="item-id" name="item-id" value="{{ item.id }}" />
-                                <input id="complete-todo" type="submit" value="complete" />
-                            </form>
-                        {% else %}
-                            <form action="/uncomplete" method="post">
-                                <input type="hidden" id="item-id" name="item-id" value="{{ item.id }}" />
-                                <input id="uncomplete-todo" type="submit" value="uncomplete" />
-                            </form>
+                        {%  if view_model.user_can_write %}
+                            {% if item.status == not_started_status %}
+                                <form action="/complete" method="post">
+                                    <input type="hidden" id="item-id" name="item-id" value="{{ item.id }}" />
+                                    <input id="complete-todo" type="submit" value="complete" />
+                                </form>
+                            {% else %}
+                                <form action="/uncomplete" method="post">
+                                    <input type="hidden" id="item-id" name="item-id" value="{{ item.id }}" />
+                                    <input id="uncomplete-todo" type="submit" value="uncomplete" />
+                                </form>
+                            {% endif %}
                         {% endif %}
                         </td>
                         <td>
-                            <form action="/delete" method="post">
-                                <input type="hidden" id="item-id" name="item-id" value="{{ item.id }}" />
-                                <input id="delete-todo" type="submit" value="delete" />
-                            </form>
+                            {% if view_model.user_can_write %}
+                                <form action="/delete" method="post">
+                                    <input type="hidden" id="item-id" name="item-id" value="{{ item.id }}" />
+                                    <input id="delete-todo" type="submit" value="delete" />
+                                </form>
+                            {% endif %}
                         </td>
                     </tr>
                     {% endfor %}
@@ -99,25 +111,27 @@
         {% endif %}
     </div>
   </div>
-    <div class="row">
-        <div class="col-md-6">
-            <h2 class="mb-5">Add new To-do</h2>
-            <form action="/add" method="post">
-                <div class="form-floating mb-3">
-                    <label for="title">Enter a To-do:</label>
-                    <input id="title" class="mr-2 form-control" type="text" name="title" />
-                    <label for="description">Enter a description:</label>
-                    <input id="description" type="text" name="description" class="form-control" />
-                    <label for="due-date">Enter a due date:</label>
-                     <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy">
-                        <input type="text" class="form-control" id="due-date" name="due-date">
-                        <div class="input-group-addon">
-                            <span class="glyphicon glyphicon-th"></span>
+    {% if view_model.user_can_write %}
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="mb-5">Add new To-do</h2>
+                <form action="/add" method="post">
+                    <div class="form-floating mb-3">
+                        <label for="title">Enter a To-do:</label>
+                        <input id="title" class="mr-2 form-control" type="text" name="title" />
+                        <label for="description">Enter a description:</label>
+                        <input id="description" type="text" name="description" class="form-control" />
+                        <label for="due-date">Enter a due date:</label>
+                         <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy">
+                            <input type="text" class="form-control" id="due-date" name="due-date">
+                            <div class="input-group-addon">
+                                <span class="glyphicon glyphicon-th"></span>
+                            </div>
                         </div>
+                        <input id='new-todo-submit' type="submit" value="submit" class="mt-2" />
                     </div>
-                    <input id='new-todo-submit' type="submit" value="submit" class="mt-2" />
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
+    {% endif %}
 {% endblock %}
