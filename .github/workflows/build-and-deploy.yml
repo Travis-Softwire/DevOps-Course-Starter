@@ -134,7 +134,7 @@ jobs:
   deploy:
     name: Build and deploy
     needs: test
-    if:  github.event_name == 'push' && github.ref == 'refs/heads/master'
+    if:  github.event_name == 'push' && github.ref == 'refs/heads/exercise-12'
     runs-on: ubuntu-latest
     env:
       ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
