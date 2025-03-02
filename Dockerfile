@@ -17,7 +17,7 @@ RUN poetry install
 ENTRYPOINT tail -f /dev/null
 
 FROM base AS production
-RUN poetry install --no-dev
+RUN poetry install --no-root --without dev
 COPY ./todo_app ./todo_app
 ENTRYPOINT poetry run gunicorn --bind 0.0.0.0 'todo_app.app:create_app()'
 
