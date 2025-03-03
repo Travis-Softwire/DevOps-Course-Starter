@@ -32,37 +32,40 @@ def load_user(user_id):
 
 def login_callback_delegate():
     code = request.args.get("code")
-    if code is not None:
-        token_url = "https://github.com/login/oauth/access_token"
-        form_data = {
-            "client_id": os.environ["GITHUB_CLIENT_ID"],
-            "client_secret": os.environ["GITHUB_CLIENT_SECRET"],
-            "code": code,
-            "redirect_uri": urljoin(request.base_url, "callback"),
-        }
-        headers = {
-            "Accept": "application/json",
-        }
-        token_response = requests.post(token_url, form_data, None, headers=headers)
-        token_body = token_response.json()
-        access_token = token_body.get("access_token")
-        if access_token is not None:
-            headers["Authorization"] = f"Bearer {access_token}"
-            user_info_response = requests.get("https://api.github.com/user", headers=headers)
-            if user_info_response is not None:
-                user_info_body = user_info_response.json()
-                user_id = user_info_body.get("id")
-                user_name = user_info_body.get("name")
-                if user_id is not None:
-                    cosmos_user_repository = CosmosUserRepository()
-                    if len(cosmos_user_repository.get_users()) == 0:
-                        user = User(user_id, user_name, ['Admin', 'Reader'])
-                    else:
-                        user = User(user_id, user_name, ['Reader'])
-                    cosmos_user_repository.save_user(user)
-                    login_user(user)
-                    return redirect('/')
-    abort(401)
+    if code is None:
+        abort(401)
+    token_url = "https://github.com/login/oauth/access_token"
+    form_data = {
+        "client_id": os.environ["GITHUB_CLIENT_ID"],
+        "client_secret": os.environ["GITHUB_CLIENT_SECRET"],
+        "code": code,
+        "redirect_uri": urljoin(request.base_url, "callback"),
+    }
+    headers = {
+        "Accept": "application/json",
+    }
+    token_response = requests.post(token_url, form_data, None, headers=headers)
+    token_body = token_response.json()
+    access_token = token_body.get("access_token")
+    if access_token is None:
+        abort(401)
+    headers["Authorization"] = f"Bearer {access_token}"
+    user_info_response = requests.get("https://api.github.com/user", headers=headers)
+    if user_info_response is None:
+        abort(401)
+    user_info_body = user_info_response.json()
+    user_id = user_info_body.get("id")
+    user_name = user_info_body.get("name")
+    if user_id is None:
+        abort(401)
+    cosmos_user_repository = CosmosUserRepository()
+    if len(cosmos_user_repository.get_users()) == 0:
+        user = User(user_id, user_name, ['Admin', 'Reader'])
+    else:
+        user = User(user_id, user_name, ['Reader'])
+    cosmos_user_repository.save_user(user)
+    login_user(user)
+    return redirect('/')
 
 
 def initialise_auth(app):

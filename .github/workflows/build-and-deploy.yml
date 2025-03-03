@@ -112,6 +112,11 @@ jobs:
       working-directory: terraform/modules/db
       run: terraform destroy --auto-approve
 
+    - name: Terraform Destroy
+      if: always()
+      working-directory: terraform/modules/db
+      run: terraform destroy --auto-approve
+
     - name: Check for vulnerabilities
       uses: snyk/actions/python-3.10@master
       env:

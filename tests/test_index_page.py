@@ -27,7 +27,6 @@ def client(monkeypatch):
 
         # Create the new app.
         test_app = create_app()
-        initialise_auth(test_app)
         test_app.config["LOGIN_DISABLED"] = True
 
         # Use the app to create a test_client that can be used in our tests.

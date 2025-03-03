@@ -114,8 +114,8 @@ def create_app():
     todo_app.register_error_handler(401, access_denied)
     todo_app.register_error_handler(403, access_denied)
 
+    initialise_auth(todo_app)
     return todo_app
 
 
 app = create_app()
-initialise_auth(app)
