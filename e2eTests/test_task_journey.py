@@ -70,6 +70,7 @@ def test_task_journey(driver, app_with_temp_board):
         )
     )
 
+    print(driver.page_source)
     complete_button = driver.find_element(by=By.ID, value="complete-todo")
     complete_button.click()
     wait.until(
