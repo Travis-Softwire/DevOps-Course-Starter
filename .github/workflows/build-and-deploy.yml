@@ -82,27 +82,6 @@ jobs:
         rm -rf /tmp/.buildx-cache
         mv /tmp/.buildx-cache-new /tmp/.buildx-cache      
 
-    - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v3
-      with:
-        terraform_version: "^1.9.1"
-        terraform_wrapper: false
-
-    - name: Terraform Init
-      working-directory: terraform/modules/db
-      run: terraform init
-
-    - name: Terraform Plan
-      working-directory: terraform/modules/db
-      run: terraform plan
-
-    - name: Terraform Apply
-      id: tf-apply
-      working-directory: terraform/modules/db
-      run: |
-        terraform apply --auto-approve
-        echo cosmos_connection_string=$(terraform output -raw cosmos_connection_string) >> "$GITHUB_OUTPUT"
-
     - name: Run e2e tests
       run: >
         docker run
@@ -111,11 +90,6 @@ jobs:
         -e COSMOS_CONNECTION_STRING="${{ steps.tf-apply.outputs.cosmos_connection_string }}"
         --network host
         todo-app:pipeline_e2e_tests
-
-    - name: Terraform Destroy
-      if: always()
-      working-directory: terraform/modules/db
-      run: terraform destroy --auto-approve
 
     - name: Check for vulnerabilities
       uses: snyk/actions/python-3.10@master
