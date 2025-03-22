@@ -1,23 +1,21 @@
 name: Build and Deploy
 on:
   push:
-    branches:
-      - master
     paths:
       - .github/workflows/**
       - e2eTests/**
       - tests/**
       - todo_app/**
-      - terraform/**
       - Dockerfile
       - poetry.lock
+    branches:
+      - master
   pull_request:
     paths:
       - .github/workflows/**
       - e2eTests/**
       - tests/**
       - todo_app/**
-      - terraform/**
       - Dockerfile
       - poetry.lock
 
@@ -87,7 +85,7 @@ jobs:
         docker run
         -e FLASK_APP=todo_app/app
         -e SECRET_KEY="notarealsecretkey12345"
-        -e COSMOS_CONNECTION_STRING="${{ steps.tf-apply.outputs.cosmos_connection_string }}"
+        -e COSMOS_CONNECTION_STRING="mongodb://root:notarealpassword@localhost:27017"
         --network host
         todo-app:pipeline_e2e_tests
 
@@ -114,15 +112,6 @@ jobs:
     needs: test
     if:  github.event_name == 'push' && github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
-    env:
-      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
-      ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
-      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
-      ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
-      TF_VAR_prefix: "dev"
-      TF_VAR_secret_key: ${{ secrets.SECRET_KEY }}
-      TF_VAR_github_client_id: ${{ secrets.OIDC_CLIENT_ID }}
-      TF_VAR_github_client_secret: ${{ secrets.OIDC_CLIENT_SECRET }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -158,28 +147,10 @@ jobs:
       - name: Move cache
         run: |
           rm -rf /tmp/.buildx-cache
-          mv /tmp/.buildx-cache-new /tmp/.buildx-cache   
+          mv /tmp/.buildx-cache-new /tmp/.buildx-cache      
 
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-        with:
-          terraform_version: "^1.9.1"
-          terraform_wrapper: false
-
-      - name: Terraform Init
-        run: |
-          cd terraform
-          terraform init
-
-      - name: Terraform Plan
-        working-directory: terraform
-        run: terraform plan
-
-      - name: Deploy and restart
-        working-directory: terraform
-        run: |
-          terraform apply --auto-approve
-          curl -dH -X POST "$(terraform output -raw cd_webhook)"
+      - name: Restart App Service
+        run: curl -dH -X POST '${{ secrets.APP_SERVICE_WEBHOOK }}'
 
       - name: Report pipeline status
         if: always()
