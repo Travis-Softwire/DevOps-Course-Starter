@@ -25,15 +25,17 @@ jobs:
   test:
     name: Build and test
     runs-on: ubuntu-latest
-    outputs:
-      cosmos_connection_string: ${{ steps.tf-apply.outputs.cosmos_connection_string }}
-    env:
-      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
-      ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
-      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
-      ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
-      TF_VAR_prefix: "e2e-${{ github.run_number }}-${{ github.run_attempt }}"
-      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+    services:
+      local_mongodb:
+        image: mongo
+        env:
+          MONGO_INITDB_ROOT_USERNAME: root
+          MONGO_INITDB_ROOT_PASSWORD: notarealpassword
+        ports:
+          - 27017:27017
+        options: >-
+          --name local_mongo
+          --quiet
 
     steps:
     - name: Checkout
