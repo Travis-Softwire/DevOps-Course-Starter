@@ -150,15 +150,15 @@ jobs:
       - name: Restart App Service
         run: curl -dH -X POST '${{ secrets.APP_SERVICE_WEBHOOK }}'
 
-      - name: Report pipeline status
-        if: always()
-        id: slack
-        uses: slackapi/slack-github-action@v1.26.0
-        with:
-          payload: |
-            {
-              "name": ${{ toJson(format('Deploy: {0}', github.event.head_commit.message)) }},
-              "status": "${{ job.status == 'success' && 'Success :tick:' || 'Failure :no-cross:' }}"
-            }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+#      - name: Report pipeline status
+#        if: always()
+#        id: slack
+#        uses: slackapi/slack-github-action@v1.26.0
+#        with:
+#          payload: |
+#            {
+#              "name": ${{ toJson(format('Deploy: {0}', github.event.head_commit.message)) }},
+#              "status": "${{ job.status == 'success' && 'Success :tick:' || 'Failure :no-cross:' }}"
+#            }
+#        env:
+#          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}

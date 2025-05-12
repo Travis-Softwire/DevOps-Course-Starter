@@ -1,7 +1,8 @@
 name: Daily dependency check
 on:
-  schedule:
-    - cron: '0 9 * * *'
+  push:
+    branches:
+      - none
 
 jobs:
   scan:
@@ -16,15 +17,15 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
-      - name: Report pipeline status
-        if: always()
-        id: slack
-        uses: slackapi/slack-github-action@v1.26.0
-        with:
-          payload: |
-            {
-              "name": "Daily dependency scan",
-              "status": "${{ job.status }}"
-            }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+#      - name: Report pipeline status
+#        if: always()
+#        id: slack
+#        uses: slackapi/slack-github-action@v1.26.0
+#        with:
+#          payload: |
+#            {
+#              "name": "Daily dependency scan",
+#              "status": "${{ job.status }}"
+#            }
+#        env:
+#          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
